@@ -1,0 +1,58 @@
+\begin{figure}
+\centering
+\AxiomC{}
+\UnaryInfC{$\Prop \leq \Set \leq$ Type$_1$}
+\DisplayProof
+\;
+\AxiomC{}
+\RightLabel{\defrule{st-cumul}}
+\UnaryInfC{$\Type{i} \leq$ Type$_{i+1}$}
+\DisplayProof
+
+\hfill\spacer
+
+\AxiomC{$t \approx u$}
+\RightLabel{\defrule{st-conv}}
+\UnaryInfC{$t \leq u$}
+\DisplayProof
+\quad
+\AxiomC{$t \leq u$}
+\AxiomC{$u \leq v$}
+\RightLabel{\defrule{st-trans}}
+\BinaryInfC{$t \leq v$}
+\DisplayProof
+
+\hfill\spacer
+
+\AxiomC{$t_2 \approx t_1$}
+\AxiomC{$u_1 \leq u_2$}
+\RightLabel{\defrule{st-prod}}
+\BinaryInfC{$\Pi x: t_1. u_1 \leq \Pi y: t_2. u_2$}
+\DisplayProof
+
+\hfill\spacer
+
+\AxiomC{$t_1 \leq t_2$}
+\AxiomC{$u_1 \approx u_2$}
+\RightLabel{\defrule{st-app}}
+\BinaryInfC{$t_1 u_1 \leq t_2 u_2$}
+\DisplayProof
+
+\hfill\spacer
+
+\AxiomC{$I$ inductive}
+\AxiomC{$r \sqsubseteq s$}
+\RightLabel{\defrule{st-ind}}
+\BinaryInfC{$I^{r} \leq I^{s}$}
+\DisplayProof
+
+\hfill\spacer
+
+\AxiomC{$I$ coinductive}
+\AxiomC{$s \sqsubseteq r$}
+\RightLabel{\defrule{st-coind}}
+\BinaryInfC{$I^{r} \leq I^{s}$}
+\DisplayProof
+\caption{Subtyping rules}
+\label{fig:subtyping}
+\end{figure}

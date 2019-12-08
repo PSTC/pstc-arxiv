@@ -1,0 +1,26 @@
+\begin{figure*}
+\centering
+
+\begin{tabular}{l p{0.5\linewidth}}
+    $\textsc{axiom} : U \to U$ & Produces type of universe\\
+    $\textsc{rule} : U \times U \to U$ & Produces universe of product type given universe of argument and return types \\
+    $\textsc{elim} : U \times U \times \mathcal{I} \to ()$ & Checks that given universe $\omega_k$ of \coinductive type $I_k$ of case analysis target can be eliminated to a type with given universe $\omega$; can fail \\
+    $\cdot \preceq \cdot : T \times T \to \mathbb{P}(S \times S)$ & Checks subtypeability and produces a stage constraint set; can fail \\
+    $\textsc{fresh} : \mathbb{N}^+ \to \vec{V}$ & Produces given number of fresh stage variables, putting them into $\mathcal{V}$ \\
+    $\textsc{fresh*} : \mathbb{N}^+ \to \vec{P}$ & Produces given number of fresh position stage variables, putting them into both $\mathcal{V}$ and $\mathcal{P}$ \\
+    $\textsc{inds} : \mathcal{I} \cup \mathcal{C} \to \mathbb{N}^+$ & Produces number of mutually-defined \coinductive types in definition to which given type or constructor belongs \\
+    $\textsc{decompose} : T \times \mathbb{N}^0 \to \Delta \times T$ & Splits function type into given number of arguments and return type; can fail \\
+    $\textsc{caseStage} : \mathcal{I} \times S \times \mathcal{V} \to \mathbb{P}(S \times S)$ & Given \coinductive type $I_k$, stage annotation $s$, and stage variable $\upsilon_k$, returns $\set{s \sqsubseteq \hat{\upsilon}_k}$ if $I_k$ is inductive and $\set{\hat{\upsilon}_k \sqsubseteq s}$ if $I_k$ is coinductive \\
+    $\textsc{shift} : T \to T$ & Replaces each position stage annotation by successor \\
+    $\textsc{setRecStars} : T^\circ \times \mathbb{N}^+ \to T^*$ & Given index $n$, annotates $n$th argument type $I$ and all other argument and return types with same type $I$ with position annotations; can fail \\
+    $\textsc{setCorecStars} : T^\circ \to T^*$ & Annotates return argument type $I$ and all other argument types with same type $I$ with position annotations; can fail \\
+    $\textsc{getRecVar} : T \times \mathbb{N}^+ \to \mathcal{P}$ & Given index $n$, retrieves position stage variable of $n$th argument type; can fail \\
+    $\textsc{getCorecVar} : T \to \mathcal{P}$ & Retrieve position stage variable of return type; can fail \\
+    $\textsc{getPosVars} : T \times T \to \mathcal{P}$ & Given function types $t, u$, returns stage variables from $t$ in same location as position stage variables in $u$; can fail \\
+    $\textsc{RecCheckLoop} : C \times \mathbb{P}(\mathcal{V}) \times \vec{\mathcal{P}} \times \vec{T} \times \vec{T} \to C$ & Calls \textsc{RecCheck} recursively, shrinking $\mathcal{P}$ each time; can fail via \textsc{RecCheck} \\
+    $\textsc{RecCheck} : C \times \mathcal{P} \times \mathbb{P}(\mathcal{P}) \times \mathbb{P}(\mathcal{V}) \to C$ & Checks termination and productivity using stage constraints, returning a new set of constraints; can fail
+\end{tabular}
+
+\caption{Summary of metafunctions used in the size inference algorithm}
+\label{fig:inference-metafunctions}
+\end{figure*}

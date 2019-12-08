@@ -1,0 +1,119 @@
+\title{Practical Sized Typing for Coq}
+
+\author{Jonathan Chan}
+\orcid{0000-0003-0830-3180}
+\affiliation{
+  \institution{University of British Columbia}
+}
+\email{jon@alumni.ubc.ca}
+
+\author{William J. Bowman}
+\affiliation{
+  \institution{University of British Columbia}
+}
+\email{wilbowma@cs.ubc.ca}
+
+% Fixes for arXiv submission
+% Fix `Undefined control sequence. <argument> \mdseries@tt`
+\makeatletter
+\providecommand{\mdseries@tt}{}
+\makeatother
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+%\usepackage[draft]{minted} % Use draft to fix `Package minted Error: You must invoke LaTeX with the -shell-escape flag.`
+\usepackage{minted}
+\usepackage{bussproofs}
+\usepackage{mathpartir}
+\usepackage{xspace}
+\usepackage[shortcuts]{extdash}
+\usepackage{enumitem}
+\usepackage[title]{appendix}
+\usepackage{proof}
+\usepackage{doi}
+\usepackage[pdf]{graphviz}
+
+% Use \autoref for references with prefixes
+\def\sectionautorefname{Section}
+\def\subsectionautorefname{Subsection}
+\def\subsubsectionautorefname{Subsubsection}
+\def\figureautorefname{Figure}
+\def\tableautorefname{Table}
+\def\Appendixautorefname{Appendix}
+% Force upright style in mathpartir inferrule* right label
+\renewcommand{\RightTirNameStyle}{\upshape}
+% Shrink bibliography font size
+%\renewcommand*{\bibfont}{\small}
+% Get rid of first page first column footnote conference information
+\renewcommand\footnotetextcopyrightpermission[1]{}
+% Get rid of headers/footers
+%\fancyfoot{}
+%\fancyhead[L]{\shorttitle}
+%\fancyhead[R]{\shortauthors}
+
+% rule hyperlinks
+\newcommand{\defrule}[1]{\phantomsection\label{#1}(\text{#1})}
+\newcommand{\defnamerule}[2]{\phantomsection\label{#1}(#2)}
+\newcommand{\refrule}[1]{\hyperref[#1]{Rule (#1)}}
+\newcommand{\refnorule}[1]{\hyperref[#1]{(#1)}}
+% langs
+\newcommand{\lang}{CIC$\widehat{*}$\xspace}
+\newcommand{\CIChat}{CIC$\widehat{~}$\xspace}
+\newcommand{\CIChatbar}{CIC$\widehat{\text{\underline{\:\:}}}$\xspace}
+\newcommand{\Fhat}{F$\widehat{~}$\xspace}
+\newcommand{\CIChatl}{CIC$\widehat{_l}$\xspace}
+\newcommand{\CChatomega}{CC$\widehat{\omega}$\xspace}
+\newcommand{\CIChatsub}{CIC$\widehat{_\sqsubseteq}$\xspace}
+% metafunctions (for math envs)
+\newcommand{\dom}[1]{\text{dom}(#1)}
+\newcommand{\SV}[1]{\text{SV}(#1)}
+\newcommand{\WF}[1]{\text{WF}(#1)}
+\newcommand{\whnf}[1]{\textsc{whnf}(#1)}
+\newcommand{\fresh}[1]{\textsc{fresh}(#1)}
+\newcommand{\freshi}[1]{\textsc{fresh*}(#1)}
+\newcommand{\axiom}[1]{\textsc{axiom}(#1)}
+\newcommand{\rules}[2]{\textsc{rule}(#1, #2)}
+\newcommand{\elim}[3]{\textsc{elim}(#1, #2, #3)}
+\newcommand{\inds}[1]{\textsc{inds}(#1)}
+\newcommand{\indtype}[2]{\textsc{indType}(#1, #2)}
+\newcommand{\constrtype}[3]{\textsc{constrType}(#1, #2, #3)}
+\newcommand{\motivetype}[4]{\textsc{motiveType}(#1, #2, #3, #4)}
+\newcommand{\branchtype}[5]{\textsc{branchType}(#1, #2, #3, #4, #5)}
+\newcommand{\indsig}[1]{\textsc{indSig}(#1)}
+\newcommand{\constrsig}[1]{\textsc{constrSig}(#1)}
+\newcommand{\caseStage}[2]{\textsc{caseStage}(#1, #2)}
+\newcommand{\decompose}[2]{\textsc{decompose}(#1, #2)}
+\newcommand{\shift}[1]{\textsc{shift}(#1)}
+\newcommand{\setrecstars}[2]{\textsc{setRecStars}(#1, #2)}
+\newcommand{\setcorecstars}[1]{\textsc{setCorecStars}(#1)}
+\newcommand{\getrecvar}[2]{\textsc{getRecVar}(#1, #2)}
+\newcommand{\getcorecvar}[1]{\textsc{getCorecVar}(#1)}
+\newcommand{\getposvars}[2]{\textsc{getPosVars}(#1, #2)}
+\newcommand{\RecCheckLoop}[4]{\textsc{RecCheckLoop}(#1, #2, #3, #4)}
+% terms (for math envs)
+\newcommand{\Prop}{\text{Prop}}
+\newcommand{\Set}{\text{Set}}
+\newcommand{\Type}[1]{\text{Type}_{#1}}
+\newcommand{\letin}[4]{\text{let}\ #1 : #2 \coloneqq #3\ \text{in}\ #4}
+\newcommand{\caseof}[4]{\text{case}_{#1}\ #2\ \text{of}\ \langle #3 \Rightarrow #4 \rangle}
+\newcommand{\fix}[4]{\text{fix}_{#1}\ \langle #2 : #3 \coloneqq #4 \rangle}
+\newcommand{\cofix}[4]{\text{cofix}_{#1}\ \langle #2 : #3 \coloneqq #4 \rangle}
+\newcommand{\Size}{\text{Size}}
+\newcommand{\SizeLt}{\text{Size<}}
+\newcommand{\SizeUniv}{\text{SizeUniv}}
+% other (for math envs)
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\sgg}{\Sigma, \Gamma_G, \Gamma}
+\newcommand{\cgg}{C, \Gamma_G, \Gamma}
+\newcommand{\pos}{\ \text{pos}\ }
+\renewcommand{\neg}{\ \text{neg}\ }
+% other
+\newcommand{\inmaterials}{in the anonymous supplementary materials}
+\newcommand{\spacer}{\vspace{1ex}}
+% (co) words
+\newcommand{\coinductive}{(co)\-inductive\xspace}
+\newcommand{\corecursive}{(co)\-recursive\xspace}
+\newcommand{\cofixpoint}{(co)\-fix\-point\xspace}
+\newcommand{\cofixpoints}{(co)\-fix\-points\xspace}

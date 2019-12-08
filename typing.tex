@@ -1,0 +1,132 @@
+\begin{figure*}
+\centering
+\small
+
+\begin{flushleft}
+\fbox{$\sgg \vdash T : T$}
+\end{flushleft}
+
+\begin{tabular}{c c}
+    \infer[\defrule{var-assum}]{
+        \sgg \vdash x:t
+    }{
+        \WF{\sgg} &
+        (x:t) \in \Gamma
+    }
+    &
+    \infer[\defrule{var-def}]{
+        \sgg \vdash x^{\langle s_i \rangle} : t
+    }{
+        \WF{\sgg} &
+        (x:t \coloneqq e) \in \Gamma &
+        \|\overline{s_i}\| = \llbracket e \rrbracket
+    }
+    \\[2ex]
+    \infer[\defrule{const-assum}]{
+        \sgg \vdash x:t
+    }{
+        \WF{\sgg} &
+        (\text{Assum}\ x:t.) \in \Gamma_G
+    }
+    &
+    \infer[\defrule{const-def}]{
+        \sgg \vdash x^{\langle s_i \rangle} : t[\iota \coloneqq s]
+    }{
+        \WF{\sgg} &
+        (\text{Def}\ x:t \coloneqq e.) \in \Gamma_G &
+        \|\overline{s_i}\| = \llbracket e \rrbracket
+    }
+\end{tabular}
+
+\hfill\break
+
+\AxiomC{$\WF{\sgg}$}
+\AxiomC{$(\varw_1, \varw_2) \in \text{Axioms}$}
+\RightLabel{\defrule{univ}}
+\BinaryInfC{$\sgg \vdash \varw_1 : \varw_2$}
+\DisplayProof
+\qquad
+\AxiomC{$\sgg \vdash e:t$}
+\AxiomC{$u:\varw$}
+\AxiomC{$t \leq u$}
+\RightLabel{\defrule{conv}}
+\TrinaryInfC{$\sgg \vdash e:u$}
+\DisplayProof
+
+\hfill\break
+
+\AxiomC{$\sgg \vdash t : \varw_1$}
+\AxiomC{$\sgg (x:t) \vdash u : \varw_2$}
+\AxiomC{$(\varw_1, \varw_2, \varw_3) \in \text{Rules}$}
+\RightLabel{\defrule{prod}}
+\TrinaryInfC{$\sgg \vdash \Pi x:t.u : \varw_3$}
+\DisplayProof
+
+\hfill\break
+
+\AxiomC{$\sgg (x:t) \vdash e:u$}
+\RightLabel{\defrule{abs}}
+\UnaryInfC{$\sgg \vdash \lambda x:|t|.e : \Pi x:t.u$}
+\DisplayProof
+
+\hfill\break
+
+\AxiomC{$\sgg \vdash e_1 : \Pi x:t.u$}
+\AxiomC{$\sgg \vdash e_2 : t$}
+\RightLabel{\defrule{app}}
+\BinaryInfC{$\sgg \vdash e_1 e_2 : u[x \coloneqq e_2]$}
+\DisplayProof
+
+\hfill\break
+
+\AxiomC{$\sgg \vdash e_1:t$}
+\AxiomC{$\sgg (x:t \coloneqq e_1) \vdash e_2:u$}
+\RightLabel{\defrule{let-in}}
+\BinaryInfC{$\sgg \vdash \letin{x}{|t|}{e_1}{e_2} : u[x \coloneqq e_1]$}
+\DisplayProof
+
+\hfill\break
+
+\AxiomC{$\WF{\sgg}$}
+\RightLabel{\defrule{ind}}
+\UnaryInfC{$\sgg \vdash I^s : \indtype{\Sigma}{I}$}
+\DisplayProof
+\qquad
+\AxiomC{$\WF{\sgg}$}
+\RightLabel{\defrule{constr}}
+\UnaryInfC{$\sgg \vdash c : \constrtype{\Sigma}{c_}{\overline{s_i}}$}
+\DisplayProof
+
+\hfill\break
+
+\AxiomC{$\sgg \vdash e : I_k^{\hat{s}_k}\ \overline{p}\ \overline{a} \qquad \indtype{\Sigma}{I_k} = \Pi \_ . \varw_k \qquad (\varw_k, \varw, I_k) \in \text{Elims}$}
+\noLine
+\UnaryInfC{$\sgg \vdash \wp : \motivetype{\Sigma}{\overline{p}}{\varw}{I_k^{\hat{s}_k}} \qquad \sgg \vdash e_j : \branchtype{\Sigma}{\overline{p}}{c_j}{\overline{s_i}}{\wp}$}
+\RightLabel{\defrule{case}}
+\UnaryInfC{$\sgg \vdash \caseof{|\wp|}{e}{c_j}{e_j} : \wp\overline{a}e$}
+\DisplayProof
+
+\hfill\break
+
+\AxiomC{$t_k \approx \Pi \Delta_{1k} . \Pi x_k : I_k^{\upsilon_k}\ \overline{a}_k. \Pi \Delta_{2k}. u_k \qquad \|\Delta_k\| = n_m - 1$}
+\noLine
+\UnaryInfC{$\upsilon_k \pos \Delta_{1k}, \Delta_{2k}, u_k \qquad \upsilon_k \notin \SV{\Gamma, \Delta_k, \overline{a}_k, e_k} \qquad \upsilon_k, \lfloor s \rfloor \in \mathcal{P}$}
+\noLine
+\UnaryInfC{$\sgg \vdash t_k : \varw_k \qquad \sgg \overline{(f_k : t_k)} \vdash e_k : t_k[\upsilon_k \coloneqq \hat{\upsilon}_k]$}
+\RightLabel{\defrule{fix}}
+\UnaryInfC{$\sgg \vdash \fix{\langle n_k \rangle, m}{f_k}{|t_k|^*}{e_k} : t_m[\upsilon_m \coloneqq s]$}
+\DisplayProof
+
+\hfill\break
+
+\AxiomC{$t_k \approx \Pi \Delta_k . I_k^{\upsilon_k}\ \overline{a}_k$}
+\noLine
+\UnaryInfC{$\upsilon_k \neg \Delta_k \qquad \upsilon_k \notin \SV{\Gamma, \overline{a}_k, e_k} \qquad \upsilon_k, \lfloor s \rfloor \in \mathcal{P}$}
+\noLine
+\UnaryInfC{$\sgg \vdash t_k : \varw_k \qquad \sgg \overline{(f_k : t_k)} \vdash e_k : t_k[\upsilon_k \coloneqq \hat{\upsilon}_k]$}
+\RightLabel{\defrule{cofix}}
+\UnaryInfC{$\sgg \vdash \cofix{m}{f_k}{|t_k|^*}{e_k} : t_m[\upsilon_m \coloneqq s]$}
+\DisplayProof
+\caption{Typing rules}
+\label{fig:typing}
+\end{figure*}

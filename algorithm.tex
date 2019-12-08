@@ -1,0 +1,139 @@
+\begin{figure*}[!ph]
+\centering
+\small
+
+\begin{flushleft}
+\fbox{$\cgg \vdash T^\circ \Leftarrow T \rightsquigarrow C, T$}
+\end{flushleft}
+
+\begin{mathpar}
+\infer[\defrule{a-check}]{
+    \cgg \vdash e^\circ \Leftarrow u \rightsquigarrow C_1 \cup t \preceq u, e
+}{
+    \cgg \vdash e^\circ \rightsquigarrow C_1, e \Rightarrow t
+}
+\end{mathpar}
+
+\begin{flushleft}
+\fbox{$\cgg \vdash T^\circ \rightsquigarrow C, T \Rightarrow T$}
+\end{flushleft}
+
+\begin{tabular}{c c}
+    \infer[\defrule{a-var-assum}]{
+        \cgg \vdash x \rightsquigarrow C, x \Rightarrow \Gamma(x)
+    }{}
+    &
+    \infer[\defrule{a-var-def}]{
+        \cgg \vdash x \rightsquigarrow C, x^{\langle \upsilon_i \rangle} \Rightarrow t
+    }{
+        e : t = \Gamma(x) &
+        \overline{\upsilon_i} = \fresh{\llbracket e \rrbracket}
+    }
+    \\[2ex]
+    \infer[\defrule{a-const-assum}]{
+        \cgg \vdash x \rightsquigarrow C, x \Rightarrow \Gamma_G(x)
+    }{}
+    &
+    \infer[\defrule{a-const-def}]{
+        \cgg \vdash x \rightsquigarrow C, x^{\langle \upsilon_i \rangle} \Rightarrow t[\iota \coloneqq \upsilon]
+    }{
+        e : t = \Gamma_G(x) &
+        \overline{\upsilon_i} = \fresh{\llbracket e \rrbracket} &
+        \upsilon = \fresh{1}
+    }
+\end{tabular}
+\\[1ex]
+
+\begin{mathpar}
+\infer[\defrule{a-univ}]{
+    \cgg \vdash \varw \rightsquigarrow C, \varw \Rightarrow \axiom{\varw}
+}{}
+\hva \and
+\infer[\defrule{a-prod}]{
+    \cgg \vdash \Pi x: t^\circ. u^\circ \rightsquigarrow C_2, \Pi x: t. u \Rightarrow \rules{\varw_1}{\varw_2}
+}{
+    \cgg \vdash t^\circ \rightsquigarrow C_1, t \Rightarrow^* \varw_1 \\
+    C_1, \Gamma_G, \Gamma(x:t) \vdash u^\circ \rightsquigarrow C_2, u \Rightarrow^* \varw_2
+}
+\hva \and
+\infer[\defrule{a-abs}]{
+    \cgg \vdash \lambda x: t^\circ \coloneqq e^\circ \rightsquigarrow C_2, \lambda x: |t| \coloneqq e \Rightarrow \Pi x:t.u
+}{
+    \cgg \vdash t^\circ \rightsquigarrow C_1, t \Rightarrow^* \varw \\
+    C_1, \Gamma_G, \Gamma(x:t) \vdash e^\circ \rightsquigarrow C_2, e \Rightarrow u
+}
+\hva \and
+\infer[\defrule{a-app}]{
+    \cgg \vdash e_1^\circ e_2^\circ \rightsquigarrow C_2, e_1 e_2 \Rightarrow u[x \coloneqq e_2]
+}{
+    \cgg \vdash e_1^\circ \rightsquigarrow C_1, e_1 \Rightarrow^* \Pi x:t.u \\
+    C_1, \Gamma_G, \Gamma \vdash e_2^\circ \Leftarrow t \rightsquigarrow C_2, e_2
+}
+\hva \and
+\infer[\defrule{a-let-in}]{
+    \cgg \vdash \letin{x}{t^\circ}{e_1^\circ}{e_2^\circ} \rightsquigarrow C_3, \letin{x}{|t|}{e_1}{e_2} \Rightarrow u[x \coloneqq e_1]
+}{
+    \cgg \vdash t^\circ \rightsquigarrow C_1, t \Rightarrow^* \varw \\
+    C_1, \Gamma_G, \Gamma \vdash e_1^\circ \Leftarrow t \rightsquigarrow C_2, e_1 \\
+    C_2, \Gamma_G, \Gamma(x:t \coloneqq e_1) \vdash e_2^\circ \rightsquigarrow C_3, e_2 \Rightarrow u
+}
+\hva \and
+\infer[\defrule{a-ind}]{
+    \cgg \vdash I \rightsquigarrow C, I^\upsilon \Rightarrow \indtype{\Sigma}{I}
+}{
+    \upsilon = \fresh{1}
+}
+\and
+\infer[\defrule{a-ind-star}]{
+    \cgg \vdash I^* \rightsquigarrow C, I^\rho \Rightarrow \indtype{\Sigma}{I}
+}{
+    \rho = \freshi{1}
+}
+\hva \and
+\infer[\defrule{a-constr}]{
+    \cgg \vdash c \rightsquigarrow C, c \Rightarrow \constrtype{\Sigma}{c}{\overline{\upsilon}}
+}{
+    \overline{\upsilon} = \fresh{\inds{c}}
+}
+\hva \and
+\inferrule*[right=\defrule{a-case}]{
+    \cgg \vdash e^\circ \rightsquigarrow C_1, e \Rightarrow^* I_k^s\ \overline{p}\ \overline{a} \\
+    C_1, \Gamma_G, \Gamma \vdash \wp^\circ \rightsquigarrow C_2, \wp \Rightarrow t_p \\\\
+    \Pi \_ : \varw_k = \indtype{\Sigma}{I_k} \\
+    (\_, \varw) = \decompose{t_p}{\|\Delta_{a_k}\| + 1} \\
+    \elim{\varw_k}{\varw}{I_k} \\\\
+    \overline{\upsilon_i} = \fresh{\inds{I_k}} \\
+    C_3 = \caseStage{I_k^s}{\hat{\upsilon}_k} \\
+    C_4 = t_p \preceq \motivetype{\Sigma}{\overline{p}}{\varw}{I_k^{\hat{\upsilon}_k}} \\\\
+    C_5 = C_2 \cup C_3 \cup C_4 \\
+    C_5, \Gamma_G, \Gamma \vdash e^\circ_j \Leftarrow \branchtype{\Sigma}{\overline{p}}{c_j}{\overline{\upsilon_i}}{\wp} \rightsquigarrow C_{6j}, e_j \\
+    C_6 = \textstyle\bigcup_j C_{6j}
+}{
+    \cgg \vdash \caseof{\wp^\circ}{e^\circ}{c_j}{e_j^\circ} \rightsquigarrow C_6, \caseof{|\wp|}{e}{c_j}{e_j} \Rightarrow \wp\overline{a}e
+}
+\hva \and
+\inferrule*[right=\defrule{a-fix}]{
+    \cgg \vdash t_k^\circ \rightsquigarrow \_, \_ \Rightarrow \_ \\
+    \cgg \vdash \setrecstars{t_k^\circ}{n_k} \rightsquigarrow C_{1k}, t_k \Rightarrow^* \varw \\
+    \textstyle\bigcup_k C_{1k}, \Gamma_G, \Gamma\overline{(f_k : t_k)} \vdash e_k^\circ \Leftarrow  \shift{t_k} \rightsquigarrow C_{2k}, e_k \\
+    C_4 = \RecCheckLoop{\textstyle\bigcup_k C_{2k}}{\overline{\getrecvar{t_k}{n_k}}}{\overline{t_k}}{\overline{e_k}}
+}{
+    \cgg \vdash \fix{\langle n_k \rangle, m}{f_k}{t_k^\circ}{e_k} \rightsquigarrow C_4, \fix{\langle n_k \rangle, m}{f_k}{|t_k|^*}{e_k} \Rightarrow t_m
+}
+\hva \and
+\inferrule*[right=\defrule{a-cofix}]{
+    \cgg \vdash t_k^\circ \rightsquigarrow \_, \_ \Rightarrow \_ \\
+    \cgg \vdash \setcorecstars{t_k^\circ} \rightsquigarrow C_{1k}, t_k \Rightarrow^* \varw \\
+    \textstyle\bigcup_k C_{1k}, \Gamma_G, \Gamma\overline{(f_k : t_k)} \vdash e_k^\circ \Leftarrow \shift{t_k} \rightsquigarrow C_{2k}, e_k \\
+    C_4 = \RecCheckLoop{\textstyle\bigcup_k C_{2k}}{\overline{\getcorecvar{t_k}}}{\overline{t_k}}{\overline{e_k}}
+}{
+    \cgg \vdash \cofix{m}{f_k}{t_k^\circ}{e_k} \rightsquigarrow C_4, \cofix{m}{f_k}{|t_k|^*}{e_k} \Rightarrow t_m
+}
+\end{mathpar}
+
+\caption{Size inference algorithm}
+\label{fig:algorithm}
+\end{figure*}
+
+% Use this to get rid of the page number that overlaps with the rules
+% \thispagestyle{empty}

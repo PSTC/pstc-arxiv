@@ -1,0 +1,33 @@
+\begin{figure}
+\centering
+
+\begin{flushleft}
+\fbox{$\Gamma_G^\circ \rightsquigarrow \Gamma_G$}
+\end{flushleft}
+
+\begin{mathpar}
+\infer[\defrule{a-global-empty}]{
+    \square \rightsquigarrow \square
+}{}
+\and
+\infer[\defrule{a-global-assum}]{
+    \Gamma_G^\circ(\text{Assum}\ x:t^\circ.) \rightsquigarrow \Gamma_G(\text{Assum}\ x:|t|^\infty.)
+}{
+    \Gamma_G^\circ \rightsquigarrow \Gamma_G \\
+    \emptyset, \Gamma_G, \square \vdash t^\circ \rightsquigarrow \_, t \Rightarrow \varw
+}
+\hva \and
+\inferrule*[right=\defrule{a-global-def}]{
+    \Gamma_G^\circ \rightsquigarrow \Gamma_G \\
+    \emptyset, \Gamma_G, \square \vdash t^\circ \rightsquigarrow C_1, t \Rightarrow \varw \\\\
+    C_1, \Gamma_G, \square \vdash e^\circ \rightsquigarrow \_, e \Rightarrow u \\
+    \_ = u \preceq t \\
+    \mathcal{P} \coloneqq \mathcal{P} \cup \getposvars{t}{u}
+}{
+    \Gamma_G^\circ(\text{Def}\ x:t^\circ \coloneqq e^\circ.) \rightsquigarrow \Gamma_G(\text{Def}\ x:|t|^\iota \coloneqq |e|^\infty.)
+}
+\end{mathpar}
+    
+\caption{Size inference algorithm (continued)}
+\label{fig:algorithm-cont}
+\end{figure}

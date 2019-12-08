@@ -1,0 +1,34 @@
+\begin{figure}
+\centering
+\begin{align*}
+S &\Coloneqq \mathcal{V} \mid \mathcal{P} \mid \widehat{S} \mid \infty &\text{stage annotations} \\
+U &\Coloneqq \text{Prop} \mid \text{Set} \mid \text{Type}_n &\text{set of universes}
+\end{align*}
+\begin{align*}
+T[\alpha] &\Coloneqq \\
+    &\mid U
+        &\textit{universes}\\
+    &\mid \mathcal{X} \mid \mathcal{X}^{\langle \alpha \rangle}
+        &\textit{variables} \\
+    &\mid \lambda \mathcal{X}: T^\circ. T[\alpha]
+        &\textit{abstractions} \\
+    &\mid T[\alpha] T[\alpha]
+        &\textit{applications} \\
+    &\mid \Pi \mathcal{X}: T[\alpha]. T[\alpha]
+        &\textit{function types} \\
+    &\mid \text{let}\ \mathcal{X} : T^\circ \coloneqq T[\alpha] \ \text{in}\ T[\alpha]
+        &\textit{let-ins (definitions)} \\
+    &\mid \mathcal{I}^\alpha
+        &\textit{(co)inductive types} \\
+    &\mid \mathcal{C}
+        &\textit{(co)ind. constructors} \\
+    &\mid \text{case}_{T^\circ} \ T[\alpha] \ \text{of} \ \langle \mathcal{C} \Rightarrow T[\alpha] \rangle
+        &\textit{case analyses} \\
+    &\mid \text{fix}_{\langle n \rangle, m} \ \langle \mathcal{X}: T^* \coloneqq T[\alpha] \rangle
+        &\textit{fixpoints} \\
+    &\mid \text{cofix}_{m} \ \langle \mathcal{X}: T^* \coloneqq T[\alpha] \rangle
+        &\textit{cofixpoints}
+\end{align*}
+\caption{Syntax of \lang terms with annotations $\alpha$}
+\label{fig:terms-general}
+\end{figure}

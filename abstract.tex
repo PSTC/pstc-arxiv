@@ -1,0 +1,5 @@
+\begin{abstract}
+Termination of recursive functions and productivity of corecursive functions are important for maintaining logical consistency in proof assistants. However, contemporary proof assistants, such as Coq, rely on syntactic criteria that prevent users from easily writing obviously terminating or productive programs, such as quicksort. This is troublesome, since there exist theories for type-based termination- and productivity-checking.
+
+In this paper, we present a design and implementation of sized type checking and inference for Coq. We extend past work on sized types for the Calculus of (Co)\-Inductive Constructions (CIC) with support for global definitions found in Gallina, and extend the sized-type inference algorithm to support completely unannotated Gallina terms. This allows our design to maintain complete backward compatibility with existing Coq developments. We provide an implementation that extends the Coq kernel with optional support for sized types.
+\end{abstract}

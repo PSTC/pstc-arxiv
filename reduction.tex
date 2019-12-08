@@ -1,0 +1,18 @@
+\begin{figure}
+\centering
+\AxiomC{$\WF{\Sigma, \Gamma_G, \Gamma}$}
+\AxiomC{$(x : t \coloneqq e) \in \Gamma$}
+\RightLabel{\defnamerule{delta-local}{$\delta$-local}}
+\BinaryInfC{$\Sigma, \Gamma_G, \Gamma \vdash x^{\langle s_i \rangle} \rhd_\delta |e|^\infty \overline{[\infty_i \coloneqq s_i]}$}
+\DisplayProof
+
+\hfill\break
+
+\AxiomC{$\WF{\Sigma, \Gamma_G, \Gamma}$}
+\AxiomC{$(\text{Def}\ x : t \coloneqq e.) \in \Gamma_G$}
+\RightLabel{\defnamerule{Delta-global}{$\Delta$-global}}
+\BinaryInfC{$\Sigma, \Gamma_G, \Gamma \vdash x^{\langle s_i \rangle} \rhd_\Delta e \overline{[\infty_i \coloneqq s_i]}$}
+\DisplayProof
+\caption{Reduction rules for local and global definitions}
+\label{fig:reduction}
+\end{figure}

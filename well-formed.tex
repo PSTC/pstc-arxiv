@@ -1,0 +1,43 @@
+\begin{figure}
+\centering
+
+\AxiomC{}
+\RightLabel{\defrule{wf-nil}}
+\UnaryInfC{$\text{WF}(\square, \square, \square)$}
+\DisplayProof
+
+\hfill\spacer
+
+\AxiomC{$\sgg \vdash t: \varw$}
+\AxiomC{$x \notin \Gamma$}
+\RightLabel{\defrule{wf-local-assum}}
+\BinaryInfC{$\WF{\Sigma, \Gamma_G, \Gamma (x:t)}$}
+\DisplayProof
+
+\hfill\spacer
+
+\AxiomC{$\sgg \vdash e: t$}
+\AxiomC{$x \notin \Gamma$}
+\RightLabel{\defrule{wf-local-def}}
+\BinaryInfC{$\WF{\Sigma, \Gamma_G, \Gamma (x:t \coloneqq e)}$}
+\DisplayProof
+
+\hfill\spacer
+
+\AxiomC{$\sgg \vdash t: \varw$}
+\AxiomC{$x \notin \Gamma_G$}
+\RightLabel{\defrule{wf-global-assum}}
+\BinaryInfC{$\WF{\Sigma, \Gamma_G (\text{Assum}\ x : |t|^\infty.), \square}$}
+\DisplayProof
+
+\hfill\spacer
+
+\AxiomC{$\sgg \vdash e: t$}
+\AxiomC{$x \notin \Gamma_G$}
+\RightLabel{\defrule{wf-global-def}}
+\BinaryInfC{$\WF{\Sigma, \Gamma_G (\text{Def}\ x : |t|^\iota \coloneqq |e|^\infty.), \square}$}
+\DisplayProof
+
+\caption{Well-formedness of environments}
+\label{fig:wf}
+\end{figure}

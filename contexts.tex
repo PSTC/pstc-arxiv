@@ -1,0 +1,18 @@
+\begin{figure}
+\centering
+\begin{align*}
+D[\alpha] &\Coloneqq                                            &\text{local declarations} \\
+    &\mid \mathcal{X}: T[\alpha]                                &\textit{local assumption} \\
+    &\mid \mathcal{X}: T[\alpha] \coloneqq T[\alpha]            &\textit{local definition} \\
+D_G &\Coloneqq                                                  &\text{global declarations} \\
+    &\mid \text{Assum} \ \mathcal{X}: T^\infty.                 &\textit{global assumption} \\
+    &\mid \text{Def} \ \mathcal{X}: T^\iota \coloneqq T^\infty. &\textit{global definition}
+\end{align*}
+\begin{align*}
+\Gamma          &\Coloneqq \square \mid \Gamma (D)              &\text{local environments} \\
+\Gamma_G        &\Coloneqq \square \mid \Gamma_G (D_G)          &\text{global environment} \\
+\Delta[\alpha]  &\Coloneqq \square \mid \Delta[\alpha] (\mathcal{X}: T[\alpha]) &\text{assumption environments}
+\end{align*}
+\caption{Declarations and environments}
+\label{fig:contexts}
+\end{figure}
