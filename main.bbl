@@ -1,0 +1,181 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{8}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Barthe, Gregoire, and Pastawski}{Barthe
+  et~al\mbox{.}}{2005}]%
+        {f-hat}
+\bibfield{author}{\bibinfo{person}{G Barthe}, \bibinfo{person}{B Gregoire},
+  {and} \bibinfo{person}{F Pastawski}.} \bibinfo{year}{{2005}}\natexlab{}.
+\newblock \showarticletitle{{Practical inference for type-based termination in
+  a polymorphic setting}}. In \bibinfo{booktitle}{\emph{{Typed Lambda Calculi
+  and Applications}}} \emph{(\bibinfo{series}{{Lecture Notes in Computer
+  Science}})}, \bibfield{editor}{\bibinfo{person}{{Urzyczyn, P}}} (Ed.),
+  Vol.~\bibinfo{volume}{{3461}}. \bibinfo{publisher}{{Springer-Verlag Berlin}},
+  \bibinfo{address}{{Heidelberger Platz 3, D-14197 Berlin, Germany}},
+  \bibinfo{pages}{{71--85}}.
+\newblock
+\showISBNx{{3-540-25593-1}}
+\showISSN{{0302-9743}}
+\urldef\tempurl%
+\url{https://doi.org/10.1007/11417170_7}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Barthe, Gregoire, and Pastawski}{Barthe
+  et~al\mbox{.}}{2006}]%
+        {cic-hat}
+\bibfield{author}{\bibinfo{person}{Gilles Barthe}, \bibinfo{person}{Benjamin
+  Gregoire}, {and} \bibinfo{person}{Fernando Pastawski}.}
+  \bibinfo{year}{{2006}}\natexlab{}.
+\newblock \showarticletitle{{CIC$\widehat{~}$ : Type-Based Termination of
+  Recursive Definitions in the Calculus of Inductive Constructions}}. In
+  \bibinfo{booktitle}{\emph{{Logic for Programming, Artificial Intelligence,
+  and Reasoning, Proceedings}}} \emph{(\bibinfo{series}{{Lecture Notes in
+  Artificial Intelligence}})}, \bibfield{editor}{\bibinfo{person}{{Hermann, M
+  and Voronkov, A}}} (Ed.), Vol.~\bibinfo{volume}{{4246}}.
+  \bibinfo{publisher}{{Springer-Verlag Berlin}},
+  \bibinfo{address}{{Heidelberger Platz 3, D-14197 Berlin, Germany}},
+  \bibinfo{pages}{{257--271}}.
+\newblock
+\showISBNx{{3-540-48281-4}}
+\showISSN{{0302-9743}}
+\urldef\tempurl%
+\url{https://doi.org/10.1007/11916277\_18}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Herbelin, Pédrot, Dénès, letouzey, Sozeau,
+  Filliatre, Arias, Tassi, Gilbert, Zimmermann, and et~al.}{Herbelin
+  et~al\mbox{.}}{2019}]%
+        {impl}
+\bibfield{author}{\bibinfo{person}{Hugo Herbelin},
+  \bibinfo{person}{Pierre-Marie Pédrot}, \bibinfo{person}{Maxime Dénès},
+  \bibinfo{person}{letouzey}, \bibinfo{person}{Matthieu Sozeau},
+  \bibinfo{person}{Jean-Christophe Filliatre}, \bibinfo{person}{Emilio
+  Jesús~Gallego Arias}, \bibinfo{person}{Enrico Tassi},
+  \bibinfo{person}{Gaëtan Gilbert}, \bibinfo{person}{Théo Zimmermann}, {and}
+  \bibinfo{person}{et al.}} \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{title}{{ionathanch/coq: Initial Release}}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.5281/zenodo.3516517}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Sacchini}{Sacchini}{2011}]%
+        {cic-hat-bar}
+\bibfield{author}{\bibinfo{person}{Jorge~Luis Sacchini}.}
+  \bibinfo{year}{2011}\natexlab{}.
+\newblock \emph{\bibinfo{title}{{On type-based termination and dependent
+  pattern matching in the calculus of inductive constructions}}}.
+\newblock Theses. \bibinfo{school}{{{\'E}cole Nationale Sup{\'e}rieure des
+  Mines de Paris}}.
+\newblock
+\urldef\tempurl%
+\url{https://pastel.archives-ouvertes.fr/pastel-00622429}
+\showURL{%
+\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Sacchini}{Sacchini}{2013}]%
+        {cc-hat-omega}
+\bibfield{author}{\bibinfo{person}{Jorge~Luis Sacchini}.}
+  \bibinfo{year}{{2013}}\natexlab{}.
+\newblock \showarticletitle{{Type-Based Productivity of Stream Definitions in
+  the Calculus of Constructions}}. In \bibinfo{booktitle}{\emph{{2013 28TH
+  Annual IEEE/ACM Symposium on Logic in Computer Science (LICS)}}}
+  \emph{(\bibinfo{series}{{IEEE Symposium on Logic in Computer Science}})}.
+  \bibinfo{publisher}{{IEEE}}, \bibinfo{address}{{345 E 47th St., New York, NY
+  10017 USA}}, \bibinfo{pages}{{233--242}}.
+\newblock
+\showISBNx{{978-1-4799-0413-6}}
+\showISSN{{1043-6871}}
+\urldef\tempurl%
+\url{https://doi.org/10.1109/LICS.2013.29}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Sacchini}{Sacchini}{2014}]%
+        {cic-hat-l}
+\bibfield{author}{\bibinfo{person}{Jorge~Luis Sacchini}.}
+  \bibinfo{year}{{2014}}\natexlab{}.
+\newblock \showarticletitle{{Linear Sized Types in the Calculus of
+  Constructions}}. In \bibinfo{booktitle}{\emph{{Functional and Logic
+  Programming, FLOPS 2014}}} \emph{(\bibinfo{series}{{Lecture Notes in Computer
+  Science}})}, \bibfield{editor}{\bibinfo{person}{{Codish, M and Sumii, E}}}
+  (Ed.), Vol.~\bibinfo{volume}{{8475}}. \bibinfo{publisher}{{Springer-Verlag
+  Berlin}}, \bibinfo{address}{{Heidelberger Platz 3, D-14197 Berlin, Germany}},
+  \bibinfo{pages}{{169--185}}.
+\newblock
+\showISBNx{{978-3-319-07151-0; 978-3-319-07150-3}}
+\showISSN{{0302-9743}}
+\urldef\tempurl%
+\url{https://doi.org/10.1007/978-3-319-07151-0_11}
+\showDOI{\tempurl}
+
+
+\bibitem[\protect\citeauthoryear{Sacchini}{Sacchini}{2015}]%
+        {wellfounded}
+\bibfield{author}{\bibinfo{person}{Jorge~Luis Sacchini}.}
+  \bibinfo{year}{2015}\natexlab{}.
+\newblock \bibinfo{title}{{Well-Founded Sized Types in the Calculus of
+  (Co)Inductive Constructions}}.  (\bibinfo{year}{2015}).
+\newblock
+\urldef\tempurl%
+\url{https://web.archive.org/web/20160606143713/http://www.qatar.cmu.edu/~sacchini/well-founded/well-founded.pdf}
+\showURL{%
+\tempurl}
+\newblock
+\shownote{Unpublished paper.}
+
+
+\bibitem[\protect\citeauthoryear{Team}{Team}{2019}]%
+        {coq}
+\bibfield{author}{\bibinfo{person}{The Coq~Development Team}.}
+  \bibinfo{year}{2019}\natexlab{}.
+\newblock \bibinfo{title}{The Coq Proof Assistant, version 8.9.0}.
+\newblock
+\newblock
+\urldef\tempurl%
+\url{https://doi.org/10.5281/zenodo.2554024}
+\showDOI{\tempurl}
+
+
+\end{thebibliography}
