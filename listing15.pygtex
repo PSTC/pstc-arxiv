@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{Def} \PYG{n}{example}\PYG{o}{:} \PYG{n}{Nat} \PYG{esc}{$\to$} \PYG{n}{Nat} \PYG{esc}{$\coloneqq$}
+  \PYG{k}{fix}\PYG{esc}{$_{\langle 1 \rangle, 1}$} \PYG{esc}{$\langle$}\PYG{n}{f}\PYG{o}{:} \PYG{n}{Nat} \PYG{esc}{$\to$} \PYG{n}{Nat} \PYG{esc}{$\coloneqq$}
+    \PYG{esc}{$\lambda$}\PYG{n}{n}\PYG{o}{:} \PYG{n}{Nat}\PYG{o}{.} \PYG{k}{case}\PYG{esc}{$_{\lambda x: \texttt{Nat}. \texttt{Nat}}$} \PYG{n}{n} \PYG{k}{of}
+      \PYG{esc}{$\langle$}\PYG{n}{O} \PYG{esc}{$\Rightarrow$} \PYG{n}{O}\PYG{o}{,}
+       \PYG{n}{S} \PYG{esc}{$\Rightarrow$} \PYG{esc}{$\lambda$}\PYG{n}{n\PYGZsq{}}\PYG{o}{:} \PYG{n}{Nat}\PYG{o}{.} \PYG{n}{f} \PYG{n}{n\PYGZsq{}}\PYG{esc}{$\rangle \rangle$}\PYG{o}{.}
+\end{Verbatim}

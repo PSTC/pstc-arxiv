@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Fail} \PYG{k+kn}{Fixpoint} \PYG{n}{loop} \PYG{n}{n} \PYG{o}{:=}
+  \PYG{k}{match} \PYG{n}{n} \PYG{k}{with}
+  \PYG{o}{|} \PYG{n}{O} \PYG{o}{=\PYGZgt{}} \PYG{n}{loop} \PYG{n}{O}
+  \PYG{o}{|} \PYG{n}{S} \PYG{n}{n\PYGZsq{}} \PYG{o}{=\PYGZgt{}} \PYG{n}{O}
+  \PYG{k}{end}\PYG{o}{.}
+\end{Verbatim}

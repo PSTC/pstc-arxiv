@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{Def} \PYG{n}{aNat}\PYG{o}{:} \PYG{k+kn}{Set} \PYG{esc}{$\coloneqq$} \PYG{n}{Nat}\PYG{esc}{$^\infty$}\PYG{o}{.}
+\PYG{n}{Def} \PYG{n}{add}\PYG{o}{:} \PYG{n}{aNat}\PYG{esc}{$^{\langle\iota\rangle}$} \PYG{esc}{$\to$} \PYG{n}{aNat}\PYG{esc}{$^{\langle\infty\rangle}$} \PYG{esc}{$\to$} \PYG{n}{aNat}\PYG{esc}{$^{\langle\infty\rangle}$} \PYG{esc}{$\coloneqq$}
+  \PYG{k}{fix}\PYG{esc}{$_{\langle 1 \rangle, 1}$} \PYG{n}{add\PYGZsq{}}\PYG{o}{:} \PYG{n}{aNat}\PYG{esc}{$^{\langle * \rangle}$} \PYG{esc}{$\to$} \PYG{n}{Nat} \PYG{esc}{$\to$} \PYG{n}{Nat} \PYG{esc}{$\coloneqq$} \PYG{esc}{$\dots$}\PYG{o}{.}
+\end{Verbatim}

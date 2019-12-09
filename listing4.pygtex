@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{n}{Def} \PYG{n}{minus}\PYG{o}{:} \PYG{n}{Nat}\PYG{esc}{$^\iota$} \PYG{esc}{$\to$ }\PYG{n}{Nat}\PYG{esc}{$^\iota$} \PYG{esc}{$\to$} \PYG{n}{Nat}\PYG{esc}{$^\iota$} \PYG{esc}{$\coloneqq$} \PYG{esc}{$\dots$}\PYG{o}{.}
+\PYG{n}{Def} \PYG{n}{div}\PYG{o}{:} \PYG{n}{Nat}\PYG{esc}{$^\iota$} \PYG{esc}{$\to$ } \PYG{n}{Nat}\PYG{esc}{$^\infty$} \PYG{esc}{$\to$} \PYG{n}{Nat}\PYG{esc}{$^\iota$} \PYG{esc}{$\coloneqq$} \PYG{esc}{$\dots$}\PYG{o}{.}
+\end{Verbatim}

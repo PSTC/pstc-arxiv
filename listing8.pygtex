@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{Definition} \PYG{n}{quicksort}\PYG{o}{:}
+  \PYG{o}{(}\PYG{n}{A}\PYG{o}{:} \PYG{k+kn}{Set}\PYG{o}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{List}\PYG{esc}{$^\iota$} \PYG{n}{Nat} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{List} \PYG{n}{Nat} \PYG{o}{:=}
+  \PYG{k}{fix} \PYG{n}{quicksort\PYGZsq{}} \PYG{n}{A} \PYG{o}{(}\PYG{n}{l}\PYG{o}{:} \PYG{n}{List}\PYG{esc}{$^*$} \PYG{n}{Nat}\PYG{o}{)}\PYG{o}{:} \PYG{n}{List} \PYG{n}{Nat} \PYG{o}{:=}
+    \PYG{k}{match} \PYG{n}{l} \PYG{k}{with}
+    \PYG{o}{|} \PYG{n}{Nil} \PYG{o}{=\PYGZgt{}} \PYG{n}{Nil}
+    \PYG{o}{|} \PYG{n}{Cons} \PYG{o}{\PYGZus{}} \PYG{n}{hd} \PYG{n}{tl} \PYG{o}{=\PYGZgt{}} \PYG{n}{append} \PYG{n}{A}
+      \PYG{o}{(}\PYG{n}{quicksort\PYGZsq{}} \PYG{o}{(}\PYG{n}{filter} \PYG{n}{Nat} \PYG{o}{(}\PYG{n}{gtb} \PYG{n}{hd}\PYG{o}{)} \PYG{n}{tl}\PYG{o}{)}\PYG{o}{)}
+      \PYG{o}{(}\PYG{n}{Cons} \PYG{n}{Nat} \PYG{n}{hd}
+        \PYG{o}{(}\PYG{n}{quicksort\PYGZsq{}} \PYG{o}{(}\PYG{n}{filter} \PYG{n}{Nat} \PYG{o}{(}\PYG{n}{leb} \PYG{n}{hd}\PYG{o}{)} \PYG{n}{tl}\PYG{o}{)}\PYG{o}{)}\PYG{o}{)}
+    \PYG{k}{end}\PYG{o}{.}
+\end{Verbatim}

@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{Definition} \PYG{n}{modulo}\PYG{o}{:} \PYG{n}{Nat} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Nat}\PYG{esc}{$^\iota$} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Nat}\PYG{esc}{$^\iota$} \PYG{o}{:=} \PYG{esc}{$\dots$}
+\PYG{n}{Fail} \PYG{k+kn}{Definition} \PYG{n}{gcd}\PYG{o}{:} \PYG{n}{Nat} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Nat} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Nat} \PYG{o}{:=}
+  \PYG{k}{fix} \PYG{n}{gcd\PYGZsq{}} \PYG{n}{a} \PYG{n}{b} \PYG{o}{:=}
+    \PYG{k}{match} \PYG{n}{a} \PYG{k}{with}
+    \PYG{o}{|} \PYG{n}{O} \PYG{o}{=\PYGZgt{}} \PYG{n}{b}
+    \PYG{o}{|} \PYG{n}{S} \PYG{n}{a\PYGZsq{}} \PYG{o}{=\PYGZgt{}} \PYG{n}{gcd\PYGZsq{}} \PYG{o}{(}\PYG{n}{modulo} \PYG{n}{b} \PYG{n}{a}\PYG{o}{)} \PYG{n}{a}
+    \PYG{k}{end}\PYG{o}{.}
+\end{Verbatim}

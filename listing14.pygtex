@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{Fixpoint} \PYG{n}{id} \PYG{o}{(}\PYG{n}{n}\PYG{o}{:} \PYG{n}{Nat}\PYG{o}{)} \PYG{o}{:=} \PYG{n}{n}\PYG{o}{.}
+\PYG{k+kn}{Fixpoint} \PYG{n}{f} \PYG{o}{(}\PYG{n}{n}\PYG{o}{:} \PYG{n}{Nat}\PYG{o}{)} \PYG{o}{:=}
+  \PYG{k}{match} \PYG{n}{n} \PYG{k}{with}
+  \PYG{o}{|} \PYG{n}{O} \PYG{o}{=\PYGZgt{}} \PYG{n}{O}
+  \PYG{o}{|} \PYG{n}{S} \PYG{n}{n\PYGZsq{}} \PYG{o}{=\PYGZgt{}} \PYG{n}{f} \PYG{o}{(}\PYG{n}{id} \PYG{n}{n\PYGZsq{}}\PYG{o}{)}
+  \PYG{k}{end}\PYG{o}{.}
+\PYG{k+kn}{Fixpoint} \PYG{n}{g} \PYG{o}{(}\PYG{n}{n}\PYG{o}{:} \PYG{n}{Nat}\PYG{o}{)} \PYG{o}{:=}
+  \PYG{k}{let} \PYG{n}{id} \PYG{o}{(}\PYG{n}{m}\PYG{o}{:} \PYG{n}{Nat}\PYG{o}{)} \PYG{o}{:=} \PYG{n}{m} \PYG{k}{in}
+  \PYG{k}{match} \PYG{n}{n} \PYG{k}{with}
+  \PYG{o}{|} \PYG{n}{O} \PYG{o}{=\PYGZgt{}} \PYG{n}{O}
+  \PYG{o}{|} \PYG{n}{S} \PYG{n}{n\PYGZsq{}} \PYG{o}{=\PYGZgt{}} \PYG{n}{g} \PYG{o}{(}\PYG{n}{id} \PYG{n}{n\PYGZsq{}}\PYG{o}{)}
+  \PYG{k}{end}\PYG{o}{.}
+\end{Verbatim}

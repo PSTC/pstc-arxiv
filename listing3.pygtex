@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k}{let} \PYG{k}{rec} \PYG{n+nc}{RecCheckLoop} \PYG{esc}{$C_2$} \PYG{esc}{$\overline{\rho_k}$} \PYG{esc}{$\overline{t_k}$} \PYG{esc}{$\overline{e_k}$} \PYG{o}{=}
+  \PYG{k}{try} \PYG{k}{let} \PYG{n}{pv}\PYG{esc}{$_k$} \PYG{o}{=} \PYG{esc}{$\texttt{PV}$} \PYG{esc}{${t_k}$} \PYG{k}{in}
+      \PYG{k}{let} \PYG{n}{sv}\PYG{esc}{$_k$} \PYG{o}{=} \PYG{o}{(}\PYG{esc}{$\texttt{SV}$} \PYG{esc}{$t_k$} \PYG{esc}{$\cup$} \PYG{esc}{$\texttt{SV}$} \PYG{esc}{$e_k$}\PYG{o}{)} \PYG{esc}{$\setminus$} \PYG{n}{pv}\PYG{esc}{$_k$} \PYG{k}{in}
+      \PYG{k}{let} \PYG{esc}{$C_{3k}$} \PYG{o}{=} \PYG{n+nc}{RecCheck} \PYG{esc}{$C_2$} \PYG{esc}{$\rho_k$} \PYG{n}{pv}\PYG{esc}{$_k$} \PYG{n}{sv}\PYG{esc}{$_k$}
+      \PYG{k}{in} \PYG{esc}{$\bigcup\limits_k C_{3k}$}
+  \PYG{k}{with} \PYG{n+nc}{RecCheckFail} \PYG{esc}{$V$} \PYG{o}{\PYGZhy{}\PYGZgt{}}
+      \PYG{esc}{$\mathcal{P}$} \PYG{o}{:=} \PYG{esc}{$\mathcal{P} \setminus V$}\PYG{o}{;}
+      \PYG{n+nc}{RecCheckLoop} \PYG{esc}{$C_2$} \PYG{esc}{$\overline{\rho_k}$} \PYG{esc}{$\overline{t_k}$} \PYG{esc}{$\overline{e_k}$}
+\end{Verbatim}

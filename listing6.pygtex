@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{Definition} \PYG{n}{filter}\PYG{o}{:}
+  \PYG{o}{(}\PYG{n}{A}\PYG{o}{:} \PYG{k+kn}{Set}\PYG{o}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{o}{(}\PYG{n}{A} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Bool}\PYG{o}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{List}\PYG{esc}{$^\iota$} \PYG{n}{A} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{List}\PYG{esc}{$^\iota$} \PYG{n}{A} \PYG{o}{:=}
+  \PYG{k}{fix} \PYG{n}{filter\PYGZsq{}} \PYG{n}{A} \PYG{n}{pred} \PYG{o}{(}\PYG{n}{l}\PYG{o}{:} \PYG{n}{List}\PYG{esc}{$^*$} \PYG{n}{A}\PYG{o}{)}\PYG{o}{:} \PYG{n}{List}\PYG{esc}{$^*$} \PYG{n}{A} \PYG{o}{:=}
+    \PYG{k}{match} \PYG{n}{l} \PYG{k}{with}
+      \PYG{o}{|} \PYG{n}{Nil} \PYG{o}{=\PYGZgt{}} \PYG{n}{Nil}
+      \PYG{o}{|} \PYG{n}{Cons} \PYG{o}{\PYGZus{}} \PYG{n}{hd} \PYG{n}{tl} \PYG{o}{=\PYGZgt{}}
+        \PYG{k}{if} \PYG{n}{pred} \PYG{n}{hd}
+        \PYG{k}{then} \PYG{n}{Cons} \PYG{n}{A} \PYG{n}{hd} \PYG{o}{(}\PYG{n}{filter\PYGZsq{}} \PYG{n}{A} \PYG{n}{pred} \PYG{n}{tl}\PYG{o}{)}
+        \PYG{k}{else} \PYG{o}{(}\PYG{n}{filter\PYGZsq{}} \PYG{n}{tl}\PYG{o}{)}
+    \PYG{k}{end}\PYG{o}{.}
+\end{Verbatim}

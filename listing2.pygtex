@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{Fixpoint} \PYG{n}{minus} \PYG{n}{n} \PYG{n}{m} \PYG{o}{:=}
+  \PYG{k}{match} \PYG{n}{n}\PYG{o}{,} \PYG{n}{m} \PYG{k}{with}
+  \PYG{o}{|} \PYG{n}{O}\PYG{o}{,} \PYG{o}{\PYGZus{}} \PYG{o}{=\PYGZgt{}} \PYG{n}{n}
+  \PYG{o}{|} \PYG{o}{\PYGZus{},} \PYG{n}{O} \PYG{o}{=\PYGZgt{}} \PYG{n}{n}
+  \PYG{o}{|} \PYG{n}{S} \PYG{n}{n\PYGZsq{}}\PYG{o}{,} \PYG{n}{S} \PYG{n}{m\PYGZsq{}} \PYG{o}{=\PYGZgt{}} \PYG{n}{minus} \PYG{n}{n\PYGZsq{}} \PYG{n}{m\PYGZsq{}}
+  \PYG{k}{end}\PYG{o}{.}
+\PYG{k+kn}{Fixpoint} \PYG{n}{div} \PYG{n}{n} \PYG{n}{m} \PYG{o}{:=}
+  \PYG{k}{match} \PYG{n}{n} \PYG{k}{with}
+  \PYG{o}{|} \PYG{n}{O} \PYG{o}{=\PYGZgt{}} \PYG{n}{O}
+  \PYG{o}{|} \PYG{n}{S} \PYG{n}{n\PYGZsq{}} \PYG{o}{=\PYGZgt{}} \PYG{n}{S} \PYG{o}{(}\PYG{n}{div} \PYG{o}{(}\PYG{n}{minus} \PYG{n}{n\PYGZsq{}} \PYG{n}{m}\PYG{o}{)} \PYG{n}{m}\PYG{o}{)}
+  \PYG{k}{end}\PYG{o}{.}
+\end{Verbatim}

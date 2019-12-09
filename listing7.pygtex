@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+\PYG{k+kn}{Definition} \PYG{n}{append}\PYG{o}{:}
+  \PYG{o}{(}\PYG{n}{A}\PYG{o}{:} \PYG{k+kn}{Set}\PYG{o}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{List}\PYG{esc}{$^\iota$} \PYG{n}{A} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{List} \PYG{n}{A} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{List} \PYG{n}{A} \PYG{o}{:=} \PYG{esc}{$\dots$}\PYG{o}{.}
+\end{Verbatim}
