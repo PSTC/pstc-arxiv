@@ -21,12 +21,10 @@
 
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows}
-\usepackage{dot2texi}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{mathtools}
 \usepackage{stmaryrd}
-%\usepackage[draft]{minted} % Use draft to fix `Package minted Error: You must invoke LaTeX with the -shell-escape flag.`
 \usepackage[frozencache,cachedir=.]{minted}
 \usepackage{bussproofs}
 \usepackage{mathpartir}
@@ -36,7 +34,6 @@
 \usepackage[title]{appendix}
 \usepackage{proof}
 \usepackage{doi}
-\usepackage[pdf]{graphviz}
 
 % Use \autoref for references with prefixes
 \def\sectionautorefname{Section}
@@ -52,7 +49,15 @@
 % Get rid of first page first column footnote conference information
 \renewcommand\footnotetextcopyrightpermission[1]{}
 % Get rid of headers/footers
-\fancypagestyle{firstpagestyle}{\fancyfoot{}}
+\makeatletter
+\fancypagestyle{firstpagestyle}{
+    \fancyhf{}
+    \fancyhead[LO]{\ACM@linecountL}
+    \fancyhead[RO]{\@folioblob}
+    \fancyheadoffset[RO,LE]{0.6\@folio@wd}
+    \fancyfoot{}
+}
+\makeatother
 \fancyfoot{}
 %\fancyhead[L]{\shorttitle}
 %\fancyhead[R]{\shortauthors}
