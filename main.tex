@@ -612,14 +612,13 @@ The set of constraints that is passed to \textsc{RecCheckLoop} is then the follo
     \centering
 \begin{dot2tex}[file=cstrnts,scale=0.6]
 digraph D {
-    p1 [label=<\rho;<SUB>1</SUB>>];
-    p2 [label=<\rho;<SUB>2</SUB>>];
-    v3 [label=<\upsilon;<SUB>3</SUB>>];
-    v4 [label=<\upsilon;<SUB>4</SUB>>];
-    v5 [label=<\upsilon;<SUB>5</SUB>>];
-    v6 [label=<\upsilon;<SUB>6</SUB>>];
-    v7 [label=<\upsilon;<SUB>7</SUB>>];
-    v8 [label=<\upsilon;<SUB>8</SUB>>];
+    p1 [label=<&rho;<SUB>1</SUB>>];
+    p2 [label=<&rho;<SUB>2</SUB>>];
+    v3 [label=<&upsilon;<SUB>3</SUB>>];
+    v4 [label=<&upsilon;<SUB>5</SUB>>];
+    v6 [label=<&upsilon;<SUB>6</SUB>>];
+    v7 [label=<&upsilon;<SUB>7</SUB>>];
+    v8 [label=<&upsilon;<SUB>8</SUB>>];
     v7 -> p1 [label="0"];
     v8 -> v7 [label="0"];
     p2 -> v5 [label="0"];
