@@ -99,8 +99,8 @@
 \inferrule*[right=\defrule{a-case}]{
     \cgg \vdash e^\circ \rightsquigarrow C_1, e \Rightarrow^* I_k^s\ \overline{p}\ \overline{a} \\
     C_1, \Gamma_G, \Gamma \vdash \wp^\circ \rightsquigarrow C_2, \wp \Rightarrow t_p \\\\
-    \Pi \_ : \varw_k = \indtype{\Sigma}{I_k} \\
-    (\_, \varw) = \decompose{t_p}{\|\Delta_{a_k}\| + 1} \\
+    \Pi \_ . \Pi \Delta_k . \varw_k = \indtype{\Sigma}{I_k} \\
+    (\_, \varw) = \decompose{t_p}{\|\Delta_k\| + 1} \\
     \elim{\varw_k}{\varw}{I_k} \\\\
     \overline{\upsilon_i} = \fresh{\inds{I_k}} \\
     C_3 = \caseStage{I_k^s}{\hat{\upsilon}_k} \\
@@ -116,24 +116,23 @@
     \cgg \vdash t_k^\circ \rightsquigarrow \_, \_ \Rightarrow \_ \\
     \cgg \vdash \setrecstars{t_k^\circ}{n_k} \rightsquigarrow C_{1k}, t_k \Rightarrow^* \varw \\
     \textstyle\bigcup_k C_{1k}, \Gamma_G, \Gamma\overline{(f_k : t_k)} \vdash e_k^\circ \Leftarrow  \shift{t_k} \rightsquigarrow C_{2k}, e_k \\
-    C_4 = \RecCheckLoop{\textstyle\bigcup_k C_{2k}}{\overline{\getrecvar{t_k}{n_k}}}{\overline{t_k}}{\overline{e_k}}
+    C_3 = \RecCheckLoop{\textstyle\bigcup_k C_{2k}}{\overline{\getrecvar{t_k}{n_k}}}{\overline{t_k}}{\overline{e_k}}
 }{
-    \cgg \vdash \fix{\langle n_k \rangle, m}{f_k}{t_k^\circ}{e_k} \rightsquigarrow C_4, \fix{\langle n_k \rangle, m}{f_k}{|t_k|^*}{e_k} \Rightarrow t_m
+    \cgg \vdash \fix{\langle n_k \rangle, m}{f_k}{t_k^\circ}{e_k} \rightsquigarrow C_3, \fix{\langle n_k \rangle, m}{f_k}{|t_k|^*}{e_k} \Rightarrow t_m
 }
 \hva \and
 \inferrule*[right=\defrule{a-cofix}]{
     \cgg \vdash t_k^\circ \rightsquigarrow \_, \_ \Rightarrow \_ \\
     \cgg \vdash \setcorecstars{t_k^\circ} \rightsquigarrow C_{1k}, t_k \Rightarrow^* \varw \\
     \textstyle\bigcup_k C_{1k}, \Gamma_G, \Gamma\overline{(f_k : t_k)} \vdash e_k^\circ \Leftarrow \shift{t_k} \rightsquigarrow C_{2k}, e_k \\
-    C_4 = \RecCheckLoop{\textstyle\bigcup_k C_{2k}}{\overline{\getcorecvar{t_k}}}{\overline{t_k}}{\overline{e_k}}
+    C_3 = \RecCheckLoop{\textstyle\bigcup_k C_{2k}}{\overline{\getcorecvar{t_k}}}{\overline{t_k}}{\overline{e_k}}
 }{
-    \cgg \vdash \cofix{m}{f_k}{t_k^\circ}{e_k} \rightsquigarrow C_4, \cofix{m}{f_k}{|t_k|^*}{e_k} \Rightarrow t_m
+    \cgg \vdash \cofix{m}{f_k}{t_k^\circ}{e_k} \rightsquigarrow C_3, \cofix{m}{f_k}{|t_k|^*}{e_k} \Rightarrow t_m
 }
 \end{mathpar}
 
+% I'm cheating to get rid of the "float too large" warning
+\vspace{-8.2pt}
 \caption{Size inference algorithm}
 \label{fig:algorithm}
 \end{figure*}
-
-% Use this to get rid of the page number that overlaps with the rules
-% \thispagestyle{empty}

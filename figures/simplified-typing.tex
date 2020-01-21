@@ -1,0 +1,59 @@
+\begin{figure}
+\centering
+\begin{align*}
+    \indtype{\Sigma}{I} &=
+        \Pi \Delta_p . \Pi \Delta_i . \varw_I \\
+    \constrtype{\Sigma}{c_\ell}{s} &=
+        \Pi \Delta_p . \Pi \Delta_\ell [I^\infty \coloneqq I^s] . I^{\hat{s}}\ \dom{\Delta_p}\ \overline{t}_\ell \\
+    \motivetype{\Sigma}{\overline{p}}{\varw}{I^s} &=
+        \Pi \Delta_i[\dom{\Delta_p} \coloneqq \overline{p}] . \Pi \_ : I^s\ \overline{p}\ \dom{\Delta_i} . \varw \\
+    \branchtype{\Sigma}{\overline{p}}{c_\ell}{s}{\wp} &=
+        \Pi \Delta_\ell [I^\infty \coloneqq I^s][\dom{\Delta_p} \coloneqq \overline{p}] . \wp\ \overline{t}_\ell\ (c_\ell\ \overline{p}\ \dom{\Delta_\ell})
+\end{align*}
+\begin{displaymath}
+    \textit{where}\;\:
+    \ell \in \overline{\jmath},
+    \big(I: \Pi\Delta_p . \Pi\Delta_i . \varw_I \coloneqq \langle c_j : \Pi \Delta_j . I_j\ \_\ \overline{t}_j \rangle \big) \in \Sigma
+\end{displaymath}
+\caption{Metafunctions for typing rules}
+\label{fig:simpl-metafunctions}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{mathpar}
+    \inferrule*[right=(case)]{
+        \sgg \vdash e : I^{\hat{s}}\ \overline{p}\ \overline{a} \\
+        \indtype{\Sigma}{I} = \Pi \_ . \Pi \_ . \varw_I \qquad (\varw_I, \varw, I) \in \text{Elims} \\\\
+        \sgg \vdash \wp : \motivetype{\Sigma}{\overline{p}}{\varw}{I^{\hat{s}}} \\
+        \sgg \vdash e_j : \branchtype{\Sigma}{\overline{p}}{c_j}{s}{\wp}
+    }{
+        \sgg \vdash \caseof{|\wp|}{e}{c_j}{e_j} : \wp\overline{a}e
+    }
+    \hva \and
+    \inferrule*[right=(fix)]{
+        t \approx \Pi \Delta_1 . \Pi x : I^\upsilon\ \overline{a}. \Pi \Delta_2 . u \\
+        \|\Delta_1\| = n - 1 \\
+        \upsilon \pos \Delta_1, \Delta_2, u \\
+        \upsilon \notin \SV{\Gamma, \overline{a}, e} \\
+        \upsilon, \lfloor s \rfloor \in \mathcal{P} \\
+        \sgg \vdash t : \varw \\
+        \sgg (f : t) \vdash e : t[\upsilon \coloneqq \hat{\upsilon}]
+    }{
+        \sgg \vdash \fix*{n}{f}{|t|^*}{e} : t[\upsilon \coloneqq s]
+    }
+    \hva \and
+    \inferrule*[right=(cofix)]{
+        t \approx \Pi \Delta . I^\upsilon\ \overline{a} \\
+        \upsilon \neg \Delta \\
+        \upsilon \notin \SV{\Gamma, \overline{a}, e} \\
+        \upsilon, \lfloor s \rfloor \in \mathcal{P} \\
+        \sgg \vdash t : \varw \\
+        \sgg (f : t) \vdash e : t[\upsilon \coloneqq \hat{\upsilon}]
+    }{
+        \sgg \vdash \cofix*{}{f}{|t|^*}{e_k} : t[\upsilon \coloneqq s]
+    }
+\end{mathpar}
+\caption{Typing rules (excerpt)}
+\label{fig:simpl-typing}
+\end{figure}

@@ -1,0 +1,40 @@
+\begin{figure}
+\centering
+\begin{mathpar}
+\inferrule*[right=(a-case)]{
+    \cgg \vdash e^\circ \rightsquigarrow C_1, e \Rightarrow^* I^s\ \overline{p}\ \overline{a} \\
+    C_1, \Gamma_G, \Gamma \vdash \wp^\circ \rightsquigarrow C_2, \wp \Rightarrow t_p \\
+    \Pi \_ . \Pi \Delta_i . \varw_I = \indtype{\Sigma}{I} \\
+    (\_, \varw) = \decompose{t_p}{\|\Delta_i\| + 1} \\
+    \elim{\varw_I}{\varw}{I} \\
+    \upsilon = \fresh{1} \\
+    C_3 = \caseStage{I^s}{\hat{\upsilon}} \\
+    C_4 = t_p \preceq \motivetype{\Sigma}{\overline{p}}{\varw}{I^{\hat{\upsilon}}} \\
+    C_5 = C_2 \cup C_3 \cup C_4 \\
+    C_5, \Gamma_G, \Gamma \vdash e^\circ_j \Leftarrow \branchtype{\Sigma}{\overline{p}}{c_j}{\upsilon}{\wp} \rightsquigarrow C_{6j}, e_j \\
+    C_6 = \textstyle\bigcup_j C_{6j}
+}{
+    \cgg \vdash \caseof{\wp^\circ}{e^\circ}{c_j}{e_j^\circ} \rightsquigarrow C_6, \caseof{|\wp|}{e}{c_j}{e_j} \Rightarrow \wp\overline{a}e
+}
+\hva \and
+\inferrule*[right=(a-fix)]{
+    \cgg \vdash t^\circ \rightsquigarrow \_, \_ \Rightarrow \_ \\\\
+    \cgg \vdash \setrecstars{t^\circ}{n} \rightsquigarrow C_1, t \Rightarrow^* \varw \\\\
+    C_1, \Gamma_G, \Gamma(f : t) \vdash e^\circ \Leftarrow  \shift{t} \rightsquigarrow C_2, e \\
+    C_3 = \RecCheckLoop{C_2}{\getrecvar{t}{n}}{t}{e}
+}{
+    \cgg \vdash \fix*{n}{f_k}{t^\circ}{e} \rightsquigarrow C_3, \fix*{n}{f}{|t|^*}{e} \Rightarrow t
+}
+\hva \and
+\inferrule*[right=(a-fix)]{
+    \cgg \vdash t^\circ \rightsquigarrow \_, \_ \Rightarrow \_ \\\\
+    \cgg \vdash \setcorecstars{t^\circ} \rightsquigarrow C_1, t \Rightarrow^* \varw \\\\
+    C_1, \Gamma_G, \Gamma(f : t) \vdash e^\circ \Leftarrow  \shift{t} \rightsquigarrow C_2, e \\
+    C_3 = \RecCheckLoop{C_2}{\getcorecvar{t}}{t}{e}
+}{
+    \cgg \vdash \cofix*{}{f_k}{t^\circ}{e} \rightsquigarrow C_3, \cofix*{}{f}{|t|^*}{e} \Rightarrow t
+}
+\end{mathpar}
+\caption{Size inference algorithm (excerpt)}
+\label{fig:simpl-algorithm}
+\end{figure}

@@ -1,0 +1,16 @@
+\begin{figure}
+\centering
+
+\begin{minted}[escapeinside=<>,mathescape=true]{ocaml}
+                let rec RecCheckLoop <$C_2$> <$\rho$> <$t$> <$e$> =
+                  try let pv = <$\texttt{PV}$> <$t$> in
+                      let sv = (<$\texttt{SV}$> <$t$> <$\cup$> <$\texttt{SV}$> <$e$>) <$\setminus$> pv in
+                      RecCheck <$C_2$> <$\rho$> pv sv
+                  with RecCheckFail <$V$> ->
+                      <$\mathcal{P}$> := <$\mathcal{P} \setminus V$>;
+                      RecCheckLoop <$C_2$> <$\rho$> <$t$> <$e$>
+\end{minted}
+
+\caption{Modified pseudocode implementation of \textsc{RecCheckLoop}}
+\label{fig:simpl-helpers}
+\end{figure}

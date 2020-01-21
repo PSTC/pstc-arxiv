@@ -1,13 +1,13 @@
 \pdfoutput=1
-\documentclass[acmsmall,nonacm,screen,review,anonymous,10pt]{acmart}
+\documentclass[acmsmall,screen,10pt]{acmart} % anonymous, review
 \settopmatter{printfolios=true,printacmref=false}
 \acmConference[ICFP 2020]{International Conference on Functional Programming}{24 -- 26 August 2020}{Jersey City, NJ, United States}
 
-\input{pre.tex}
+\input{inserts/pre.tex}
 
 \begin{document}
 
-\input{abstract.tex}
+\input{inserts/abstract.tex}
 
 \maketitle
 
@@ -83,7 +83,7 @@ However, past works on sized types in the Calculus of (Co)\-Inductive Constructi
 
 In this paper, we present \lang, an extension of \CIChat \cite{cic-hat} that resolves these issues without requiring any changes to the surface syntax of Coq. We have also implemented a size inference algorithm based on \lang within Coq's kernel\cite{impl}. In \autoref{sec:typing}, we define the syntax of the language, as well as typing rules that handle both terms and global definitions. We then present in \autoref{sec:algorithm} a size inference algorithm from CIC terms to sized \lang terms that details how we annotate the types of \cofixpoints, how we deal with the lack of polarities, and how global definitions are typed, along with the usual termination and productivity checking. In \autoref{sec:examples}, we provide a few illustrating examples, discuss some categories of terminating programs that cannot be typed in \lang, and step through the size inference algorithm for an example program. Finally, we review and briefly compare with the past work done on sized typing in CIC and related languages in \autoref{sec:related}.
 
-\section{\texorpdfstring{\lang}{CIC\^{}*}}\label{sec:typing}
+\section{\titlelang}\label{sec:typing}
 In this section, we present \lang, an extension of \CIChat. Beginning with user-provided code in CIC, we produce sized \lang terms with sized types, check for termination and productivity, and finish by erasing the sizes to produce full \lang terms.
 \begin{equation*}
     \text{CIC} \xrightarrow{\text{inference}} \text{sized \lang} \xrightarrow{\text{erasure}} \text{full \lang}
@@ -92,12 +92,12 @@ Before we delve into the details of what sized and full terms are, or how infere
 
 \subsection{Notation}
 
-\input{terms-general.tex}
+\input{figures/terms-general.tex}
 
 \autoref{fig:terms-general} presents the syntax of \lang, whose terms are parametrized over a set of annotations $\alpha$, which indicate the kind of annotations (if any) that appear on the term; details will be provided shortly. We use $\mathcal{X}$ for term variable names, $\mathcal{V}$ for stage variable names, $\mathcal{P}$ for position stage variable names, $\mathcal{I}$ for \coinductive type names, and $\mathcal{C}$ for \coinductive constructor names. (The distinction between $\mathcal{V}$ and $\mathcal{P}$ will be important when typing \cofixpoints and global definitions). We use the overline $\overline{\,\cdot\,}$ to denote a sequence of some construction: for instance, $\overline{\mathcal{V}}$ is a sequence of stage variables $\mathcal{V} \dots 
 \mathcal{V}$.
 
-In the syntax, the brackets $\langle \cdot \rangle$ delimit a vector of comma-separated constructions. In the grammar of \autoref{fig:terms-general}, the construction inside the brackets denotes the pattern of the elements in the vector. For instance, the branches of a case analysis are $\langle C \Rightarrow T, \dots, C \Rightarrow T \rangle$. Finally, we use $i, j, k, \ell, m, n$ to represent strictly positive integers.
+In the syntax, the brackets $\langle \cdot \rangle$ delimit a vector of comma-separated constructions. In the grammar of \autoref{fig:terms-general}, the construction inside the brackets denotes the pattern of the elements in the vector. For instance, the branches of a case analysis are $\langle C \Rightarrow T, \dots, C \Rightarrow T \rangle$. Finally, we use $i, j, k, \ell, m, n$ to represent strictly positive integers for indexing; consequently, we use 1-based indexing.
 
 \lang resembles the usual CIC, but there are some important differences:
 
@@ -110,7 +110,7 @@ In the syntax, the brackets $\langle \cdot \rangle$ delimit a vector of comma-se
 
 We also refer to definitions as \textit{let-ins} to avoid confusion with local and global definitions in environments. The simplicity of the size algebra of $S$, with only the successor operation $\widehat{\cdot}$, allows for easy and efficient size inference. We elaborate on this in \autoref{sec:algorithm}.
 
-\input{terms-specific.tex}
+\input{figures/terms-specific.tex}
 
 \autoref{fig:terms-specific} lists shorthand for the kinds of annotated terms that we use, with $\epsilon$ indicating a lack of annotations. Bare terms as used in the grammar are necessary for subject reduction \cite{cic-hat-bar}. Position terms have asterisks to mark the types in \cofixpoint types with at most (for fixpoints) or at least (for cofixpoints) the same size as that of the \corecursive argument. Global terms appear in the types of global definitions, with $\iota$ marking types with preserved sizes. Sized terms are used for termination- and productivity-checking, and full terms appear in the types and terms of global declarations.
 
@@ -119,13 +119,13 @@ In terms of type checking and size inference, we begin with unannotated user-pro
     T^\circ \xrightarrow{\text{inference}} T, T^* \xrightarrow{\text{erasure}} T^\infty, T^\iota
 \end{equation*}
 
-\input{contexts.tex}
+\input{figures/contexts.tex}
 
 \autoref{fig:contexts} illustrates the difference between \textit{local} and \textit{global} declarations and environments, a distinction also in the Coq kernel. Local assumptions and definitions occur in abstractions and let-ins, respectively, while global ones are entire programs. Notice that global declarations have no sized terms: by discarding size information, we can infer sizes locally rather than globally. Local declarations and assumption environments are parametrized over a set of annotations $\alpha$; we use the same shorthand for environments as for terms.
 
-\input{metavariables.tex}
+\input{figures/metavariables.tex}
 
-\input{sugar.tex}
+\input{figures/sugar.tex}
 
 \autoref{fig:metavariables} lists the metavariables we use in this work, which may be indexed by $n, m, i, j, k, \ell$, or integer literals. If the construction under the overline contains an index, the sequence spans the range of the index, usually given implicitly; for instance, given $i$ inductive types, $\overline{I_k^{s_k}} = I_1^{s_1} \dots I_i^{s_i}$. Notice that this is \textit{not} the same as an index outside of the overline, such as in $\overline{a}_k$, which represents the $k$th sequence of terms $a$. Indices also appear in syntactic vectors; for example, given a case analysis with $j$ branches, we write $\langle c_\ell \Rightarrow e_\ell \rangle$ for the vector $\langle c_1 \Rightarrow e_1, \dots, c_j \Rightarrow e_j \rangle$.
 
@@ -133,7 +133,7 @@ In terms of type checking and size inference, we begin with unannotated user-pro
 
 \subsubsection{Mutual (Co)Inductive Definitions}
 
-\input{inductives.tex}
+\input{figures/inductives.tex}
 
 The definition of mutual \coinductive types and their constructors are stored in a global signature $\Sigma$. (Typing judgements are parametrized by all three of $\Sigma, \Gamma_G, \Gamma$.) A mutual \coinductive definition contains:
 
@@ -188,7 +188,7 @@ We use the following additional expressions to denote membership in contexts and
 
 \subsection{Reduction Rules}
 
-\input{reduction.tex}
+\input{figures/reduction.tex}
 
 The reduction rules are the usual ones for $\beta$-reduction (function application), $\zeta$-reduction (let-in evaluation), $\iota$-reduction (case expressions), $\mu$-reduction (fixpoint expressions), $\nu$\-/reduction (cofixpoint expressions), $\delta$-reduction (local definitions), $\Delta$-reduction (global definitions), and $\eta$-equivalence. We define convertibility ($\approx$) as the reflexive--symmetric--transitive closure of reductions up to $\eta$-equivalence. We refer the reader to \cite{cic-hat-bar, cic-hat, cc-hat-omega, coq} for precise details and definitions.
 
@@ -198,11 +198,11 @@ We also use the metafunction \textsc{whnf} to denote the reduction of a term to 
 
 \subsection{Subtyping Rules}
 
-\input{substaging.tex}
+\input{figures/substaging.tex}
 
 First, we define the substaging relation for our stage annotations in \autoref{fig:substaging}. Additionally, we define $\widehat{\infty}$ to be equivalent to $\infty$.
 
-\input{subtyping.tex}
+\input{figures/subtyping.tex}
 
 We define the subtyping rules for sized types in \autoref{fig:subtyping}. There are some key features to note:
 
@@ -219,23 +219,23 @@ Conversely, for coinductive types, we can consider stage annotations as a measur
 
 As previously mentioned, inductive definitions do not have polarities, so there is no way to indicate whether parameters are covariant, contravariant, or invariant. As a compromise, we treat all parameters as invariant. Note that, algorithmically speaking, the subtyping relation would produce \textit{both} substaging constraints, and not \textit{neither}. For instance, $\texttt{List}^{s_1}\ \texttt{Nat}^{s_3} \leq \texttt{List}^{s_2}\ \texttt{Nat}^{s_4}$ yields $\texttt{Nat}^{s_3} \approx \texttt{Nat}^{s_4}$, which yields both $s_3 \sqsubseteq s_4$ and $s_4 \sqsubseteq s_3$. A formal description of the subtyping algorithm is presented in \autoref{sec:algorithm}.
 
-\input{well-formed.tex}
-
 \subsection{Typing Rules}
-
-\input{sets.tex}
-
-\input{metafunctions.tex}
-
-\input{pos-neg.tex}
-
-\input{typing.tex}
 
 We now present the typing rules of \lang. Note that these are type-checking rules for \textit{sized} terms, whose annotations will come from size inference in \autoref{sec:algorithm}.
 
+\input{figures/well-formed.tex}
+
 We begin with the rules for well-formedness of local and global environments, presented in \autoref{fig:wf}. As mentioned earlier, we do not cover the well-formedness of signatures. Because well-typed terms are sized, we erase annotations when putting declarations in the global environment in Rules \refnorule{wf-global-assum} and \refnorule{wf-global-def} as an explicit indicator that we only use stage variables within individual global declarations. The declared type of global definitions are annotated with global annotations in \refrule{wf-global-def}; these annotations are used by the typing rules.
 
+\input{figures/sets.tex}
+
+\input{figures/metafunctions.tex}
+
+\input{figures/pos-neg.tex}
+
 The typing rules for sized terms are given in \autoref{fig:typing}. In the style of a Pure Type System, we define the three sets Axioms, Rules, and Elims, which describe how universes are typed, how products are typed, and what eliminations are allowed in case analyses, respectively. These are the same as in CIC and are listed in \autoref{fig:axruel}. Metafunctions that construct some important function types are listed in \autoref{fig:metafunctions}; they are also used by the inference algorithm in \autoref{sec:algorithm}. Finally, the typing rules use the notions of positivity and negativity, whose rules are given in \autoref{fig:posneg}, describing where the position annotations of fixpoints are allowed to appear. We go over the typing rules in detail shortly.
+
+\input{figures/typing.tex}
 
 Before we proceed, there are some indexing conventions to note. In Rules \refnorule{ind}, \refnorule{constr}, and \refnorule{case}, we use $i$ to range over the number of \coinductive types in a single mutual \coinductive definition, $j$ to range over the number of constructors of a given \coinductive type, $k$ for a specific index in the range $\overline{\imath}$, and $\ell$ for a specific index in the range $\overline{\jmath}$. In Rules \refnorule{fix} and \refnorule{cofix}, we use $k$ to range over the number of mutually-defined \cofixpoints and $m$ for a specific index in the range $\overline{k}$. When a judgement contains a ranging index not contained within $\langle \cdot \rangle$, it means that the judgement or side condition should hold for \textit{all} indices in its range. For instance, the branch judgement in \refrule{case} should hold for all branches, and fixpoint type judgement in \refrule{fix} for all mutually-defined fixpoints. Finally, we use $\_$ to omit irrelevant constructions for readability.
 
@@ -252,8 +252,7 @@ In \refrule{constr}, the type of a constructor is a function type from its param
 \end{itemize}
 As an example, consider a possible typing of \texttt{VCons}:
 \begin{align*}
-\text{VCons} &: (A: \Type{}) \to (n:\text{Nat}^\infty) \to A \to \text{Vector}^s\ A\ n \\
-&\to \text{Vector}^{\hat{s}}\ A\ (\text{S}\ n).
+\text{VCons} &: (A: \Type{}) \to (n:\text{Nat}^\infty) \to A \to \text{Vector}^s\ A\ n \to \text{Vector}^{\hat{s}}\ A\ (\text{S}\ n)
 \end{align*}
 It has a single parameter $A$ and $\text{S}\ n$ corresponds to the index $\overline{t}_j$ of the constructor's inductive type. The input \texttt{Vector} has size $s$, while the output \texttt{Vector} has size $\hat{s}$.
 
@@ -311,7 +310,7 @@ We define a number of metafunctions to translate the side conditions from the ty
 
 \subsection{Inference Algorithm}
 
-\input{algorithm.tex}
+\input{figures/algorithm.tex}
 
 Size inference begins with a bare term. In this case, even type annotations of \cofixpoints are bare; that is, $$T^\circ \Coloneqq \dots \mid \text{fix}_{\langle n_k \rangle, m}\ \langle \mathcal{X} : T^\circ \coloneqq T^\circ \rangle \mid \text{cofix}_{n}\ \langle \mathcal{X} : T^\circ \coloneqq T^\circ \rangle$$
 Notice that fixpoints still have a vector of indices, with $n_k$ being the index of the recursive argument of the $k$th mutual fixpoint, whereas real Coq code can have no indices given. To produce these indices, we do what Coq's kernel currently does: attempt type checking on every combination of indices from left to right, even if the type of the argument at that index is not inductive. This continues until one combination works, or fails if none do.
@@ -341,7 +340,7 @@ Finally, we come to size inference and termination- and productivity-checking fo
 
 Although the desired \cofixpoint is the $m$th one in the block of mutually-defined \cofixpoints, we must still size-infer and type-check the entire mutual definition. Rules \refnorule{a-fix} and \refnorule{a-cofix} first run the size inference algorithm on each of the \cofixpoint types, ignoring the results, to ensure that any reduction we perform on it will terminate (otherwise the algorithm would have failed). Then we annotate the bare types with position annotations and pass these position types through the algorithm to get sized types $\overline{t_k}$. Next, we check that the \cofixpoint bodies have the successor-sized types of $\overline{t_k}$ when the \cofixpoints have types $\overline{t_k}$ in the environment. Lastly, we call \textsc{RecCheckLoop}, and return the constraints it gives us, along with the $m$th \cofixpoint type.
 
-\input{helpers.tex}
+\input{figures/helpers.tex}
 
 Notice that in \textsc{setRecStars} and \textsc{setCorecStars}, we annotate \textit{all} possible \coinductive types in the \cofixpoint type with position annotations. Evidently not all \cofixpoints are size-preserving; some of those position annotations (excluding the one on the recursive argument type or the corecursive return type) will need to be removed. \textsc{RecCheckLoop} is a recursive function that calls \textsc{RecCheck}, which checks that a given set of stage constraints can be satisfied; if it cannot, then \textsc{RecCheckLoop} removes the position annotations that \textsc{RecCheckLoop} has found to be problematic, then tries again. 
 
@@ -375,7 +374,7 @@ The algorithm proceeds as follows:
     \item Otherwise, let $V = V^\bot \cap (V^* \setminus \set{\rho})$. This is the set of contradictory position stage variables excluding $\rho$, which we can remove from $\mathcal{P}$ in \textsc{RecCheckLoop}. If $V$ is empty, there are no position stage variables left to remove, so the check and therefore the size inference algorithm fails. If $V$ is not empty, fail with \textsc{RecCheckFail}($V$), which is handled by \textsc{RecCheckLoop}.
 \end{enumerate}
 
-\input{algorithm-cont.tex}
+\input{figures/algorithm-cont.tex}
 
 \subsection{Well-Formedness}
 
@@ -608,32 +607,7 @@ The set of constraints that is passed to \textsc{RecCheckLoop} is then the follo
     \rho_1+1 &\sqsubseteq \upsilon_3, \upsilon_5 \sqsubseteq \rho_2+1}
 \end{align*}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.3\linewidth]{digraph.png}
-% Generating the graph requires \usepackage{dot2texi} or \usepackage[pdf]{graphviz}
-%\begin{dot2tex}[file=cstrnts,scale=0.6]
-%digraph D {
-%    p1 [label=<&rho;<SUB>1</SUB>>];
-%    p2 [label=<&rho;<SUB>2</SUB>>];
-%    v3 [label=<&upsilon;<SUB>3</SUB>>];
-%    v4 [label=<&upsilon;<SUB>5</SUB>>];
-%    v6 [label=<&upsilon;<SUB>6</SUB>>];
-%    v7 [label=<&upsilon;<SUB>7</SUB>>];
-%    v8 [label=<&upsilon;<SUB>8</SUB>>];
-%    v7 -> p1 [label="0"];
-%    v8 -> v7 [label="0"];
-%    p2 -> v5 [label="0"];
-%    v6 -> v5 [label="0"];
-%    v8 -> v4 [label="-1"];
-%    v3 -> v8 [label="1"];
-%    p1 -> v3 [label="-1"];
-%    v5 -> p2 [label="1"];
-%}
-%\end{dot2tex}
-\caption{Example stage variable constraints as a weighted directed graph}
-\label{fig:digraph}
-\end{figure}
+\input{figures/digraph.tex}
 
 \textsc{RecCheckLoop} then calls $\textsc{RecCheck}(C, \rho_1, \set{\rho_1, \rho_2}, \upsilon_5)$. Following its steps, we have:
 \begin{enumerate}
@@ -666,9 +640,9 @@ Whereas our successor sized types uses a size algebra that only has a successor 
 
 Well-founded sized types in \CIChatsub \cite{wellfounded} are yet another extension of successor sized types. The unpublished manuscript contains a type system, some metatheoretical results, and a size inference algorithm. In essence, it preserves subject reduction for coinductive constructions, and also expands the set of typeable functions.
 
-\input{agda-size.tex}
+\input{figures/agda-size.tex}
 
-The proof assistant Agda implements sized types as user-provided size parameters, similar to type parameters. Correspondingly, sizes have the type \texttt{Size}, while \texttt{Size} itself has the type \texttt{SizeUniv}, which is its own type. \autoref{fig:agda-size} presents the typing rules for \texttt{Size}; the operator $\uparrow \cdot$ corresponds to our $\hat{\cdot}$, while $\cdot \sqcup^s \cdot$ takes the maximum of two sizes. Additionally, Agda defines the size constructor \texttt{Size<}, which allows the user to specify a size constraint $r \sqsubseteq s$ with the annotation $r: \text{Size<} s$. Whereas \CIChat$ $'s philosophy is to hide all size annotations from the user with a focus on size inference, Agda opts for allowing users to explicitly write size annotations and treat them almost like terms, yielding greater flexibility in deciding how things should be typed.
+The proof assistant Agda implements sized types as user-provided size parameters, similar to type parameters. Correspondingly, sizes have the type \texttt{Size}, while \texttt{Size} itself has the type \texttt{SizeUniv}, which is its own type. \autoref{fig:agda-size} presents the typing rules for \texttt{Size}; the operator $\uparrow \cdot$ corresponds to our $\hat{\cdot}$, while $\cdot \sqcup^s \cdot$ takes the maximum of two sizes. Additionally, Agda defines the size constructor \texttt{Size<}, which allows the user to specify a size constraint $r \sqsubseteq s$ with the annotation $r: \text{Size<} s$. Whereas CIC$\widehat{~}\,$'s philosophy is to hide all size annotations from the user with a focus on size inference, Agda opts for allowing users to explicitly write size annotations and treat them almost like terms, yielding greater flexibility in deciding how things should be typed.
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -686,8 +660,23 @@ Our work extends the core language and type checking algorithm of prior theoreti
 
 \section{Supplementary Figures}\label{sec:figures}
 
-\input{inference-metafunctions.tex}
+\input{figures/inference-metafunctions.tex}
 
 \autoref{fig:inference-metafunctions} lists the various metafunctions introduced in \autoref{sec:algorithm} with their signatures and a short description.
 
+\begin{comment}
+\section{Simplified \titlelang}
+We present a simplified variant of \lang without mutually-defined \coinductive types and mutual \cofixpoints. While adhering less to Gallina, this is closer to \CIChatbar and \CIChat, and is easier to reason about. Going from the proper \lang to the simplified \lang is simple, and we provide the simplified variant explicitly for convenience. The modified portions of the syntax of terms and \coinductive definitions for simplified \lang are given in \autoref{fig:simpl-terms} and \autoref{fig:simpl-inductives}.
+
+\input{figures/simplified-definitions.tex}
+
+We give the corresponding typing rules for case expressions and \cofixpoints in \autoref{fig:simpl-typing}, as well as the required metafunctions in \autoref{fig:simpl-metafunctions}. The main differences to note are that only a single stage annotation is passed to the metafunctions, and we no longer need indices to differentiate between different mutually-defined \coinductive types in the case rule or to differentiate between different mutual \cofixpoint definitions in the (co)fix rules.
+
+\input{figures/simplified-typing.tex}
+
+Finally, we give the corresponding size inference algorithm for these terms in \autoref{fig:simpl-algorithm}. Again, we do away with some of the indices, and \textsc{RecCheckLoop} now takes a single stage annotation, a single term, and a single type. The modified version of \textsc{RecCheckLoop} is provided in \autoref{fig:simpl-helpers}
+
+\input{figures/simplified-algorithm.tex}
+\input{figures/simplified-helpers.tex}
+\end{comment}
 \end{document}

@@ -1,4 +1,4 @@
-\begin{figure*}[!h]
+\begin{figure*}[!ph]
 \centering
 \small
 
@@ -96,12 +96,12 @@
 \qquad
 \AxiomC{$\WF{\sgg}$}
 \RightLabel{\defrule{constr}}
-\UnaryInfC{$\sgg \vdash c : \constrtype{\Sigma}{c_}{\overline{s_i}}$}
+\UnaryInfC{$\sgg \vdash c : \constrtype{\Sigma}{c}{\overline{s_i}}$}
 \DisplayProof
 
 \hfill\break
 
-\AxiomC{$\sgg \vdash e : I_k^{\hat{s}_k}\ \overline{p}\ \overline{a} \qquad \indtype{\Sigma}{I_k} = \Pi \_ . \varw_k \qquad (\varw_k, \varw, I_k) \in \text{Elims}$}
+\AxiomC{$\sgg \vdash e : I_k^{\hat{s}_k}\ \overline{p}\ \overline{a} \qquad \indtype{\Sigma}{I_k} = \Pi \_ . \Pi \_ . \varw_k \qquad (\varw_k, \varw, I_k) \in \text{Elims}$}
 \noLine
 \UnaryInfC{$\sgg \vdash \wp : \motivetype{\Sigma}{\overline{p}}{\varw}{I_k^{\hat{s}_k}} \qquad \sgg \vdash e_j : \branchtype{\Sigma}{\overline{p}}{c_j}{\overline{s_i}}{\wp}$}
 \RightLabel{\defrule{case}}
@@ -110,9 +110,9 @@
 
 \hfill\break
 
-\AxiomC{$t_k \approx \Pi \Delta_{1k} . \Pi x_k : I_k^{\upsilon_k}\ \overline{a}_k. \Pi \Delta_{2k}. u_k \qquad \|\Delta_k\| = n_m - 1$}
+\AxiomC{$t_k \approx \Pi \Delta_{1k} . \Pi x_k : I_k^{\upsilon_k}\ \overline{a}_k. \Pi \Delta_{2k} . u_k \qquad \|\Delta_{1k}\| = n_m - 1$}
 \noLine
-\UnaryInfC{$\upsilon_k \pos \Delta_{1k}, \Delta_{2k}, u_k \qquad \upsilon_k \notin \SV{\Gamma, \Delta_k, \overline{a}_k, e_k} \qquad \upsilon_k, \lfloor s \rfloor \in \mathcal{P}$}
+\UnaryInfC{$\upsilon_k \pos \Delta_{1k}, \Delta_{2k}, u_k \qquad \upsilon_k \notin \SV{\Gamma, \overline{a}_k, e_k} \qquad \upsilon_k, \lfloor s \rfloor \in \mathcal{P}$}
 \noLine
 \UnaryInfC{$\sgg \vdash t_k : \varw_k \qquad \sgg \overline{(f_k : t_k)} \vdash e_k : t_k[\upsilon_k \coloneqq \hat{\upsilon}_k]$}
 \RightLabel{\defrule{fix}}

@@ -26,7 +26,7 @@
 \usepackage{amsfonts}
 \usepackage{mathtools}
 \usepackage{stmaryrd}
-\usepackage[frozencache,cachedir=.]{minted}
+\usepackage[finalizecache,cachedir=.]{minted}
 \usepackage{bussproofs}
 \usepackage{mathpartir}
 \usepackage{xspace}
@@ -70,6 +70,7 @@
 \newcommand{\refnorule}[1]{\hyperref[#1]{(#1)}}
 % langs
 \newcommand{\lang}{CIC$\widehat{*}$\xspace}
+\newcommand{\titlelang}{\texorpdfstring{\lang}{CIC\^{}*}\xspace}
 \newcommand{\CIChat}{CIC$\widehat{~}$\xspace}
 \newcommand{\CIChatbar}{CIC$\widehat{\text{\underline{\:\:}}}$\xspace}
 \newcommand{\Fhat}{F$\widehat{~}$\xspace}
@@ -108,8 +109,14 @@
 \newcommand{\Type}[1]{\text{Type}_{#1}}
 \newcommand{\letin}[4]{\text{let}\ #1 : #2 \coloneqq #3\ \text{in}\ #4}
 \newcommand{\caseof}[4]{\text{case}_{#1}\ #2\ \text{of}\ \langle #3 \Rightarrow #4 \rangle}
-\newcommand{\fix}[4]{\text{fix}_{#1}\ \langle #2 : #3 \coloneqq #4 \rangle}
-\newcommand{\cofix}[4]{\text{cofix}_{#1}\ \langle #2 : #3 \coloneqq #4 \rangle}
+\makeatletter
+    \def\fix{\@ifstar{\@@fix}{\@fix}}
+    \def\cofix{\@ifstar{\@@cofix}{\@cofix}}
+    \newcommand{\@fix}[4]{\text{fix}_{#1}\ \langle #2 : #3 \coloneqq #4 \rangle}
+    \newcommand{\@cofix}[4]{\text{cofix}_{#1}\ \langle #2 : #3 \coloneqq #4 \rangle}
+    \newcommand{\@@fix}[4]{\text{fix}_{#1}\ #2 : #3 \coloneqq #4}
+    \newcommand{\@@cofix}[4]{\text{cofix}_{#1}\ #2 : #3 \coloneqq #4}
+\makeatother
 \newcommand{\Size}{\text{Size}}
 \newcommand{\SizeLt}{\text{Size<}}
 \newcommand{\SizeUniv}{\text{SizeUniv}}

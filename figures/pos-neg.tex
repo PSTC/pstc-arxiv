@@ -27,9 +27,7 @@
 \AxiomC{$I\ \text{inductive}$}
 \BinaryInfC{$\upsilon \pos I^s \overline{a}$}
 \DisplayProof
-
-\hfill\spacer
-
+\quad
 \AxiomC{$\upsilon \notin \SV{\overline{a}}$}
 \AxiomC{$I\ \text{coinductive}$}
 \BinaryInfC{$\upsilon \neg I^s \overline{a}$}
@@ -38,15 +36,13 @@
 \hfill\spacer
 
 \AxiomC{$\upsilon \notin \SV{I^s\overline{a}}$}
-\AxiomC{$I\ \text{inductive}$}
-\BinaryInfC{$\upsilon \neg I^s \overline{a}$}
-\DisplayProof
-
-\hfill\spacer
-
-\AxiomC{$\upsilon \notin \SV{I^s\overline{a}}$}
 \AxiomC{$I\ \text{coinductive}$}
 \BinaryInfC{$\upsilon \pos I^s \overline{a}$}
+\DisplayProof
+\quad
+\AxiomC{$\upsilon \notin \SV{I^s\overline{a}}$}
+\AxiomC{$I\ \text{inductive}$}
+\BinaryInfC{$\upsilon \neg I^s \overline{a}$}
 \DisplayProof
 
 \caption{Positivity/negativity of stage variables in terms}
