@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8}]
+                \PYG{k}{let} \PYG{k}{rec} \PYG{n+nc}{RecCheckLoop} \PYG{esc}{$C_2$} \PYG{esc}{$\rho$} \PYG{esc}{$t$} \PYG{esc}{$e$} \PYG{o}{=}
+                  \PYG{k}{try} \PYG{k}{let} \PYG{n}{pv} \PYG{o}{=} \PYG{esc}{$\texttt{PV}$} \PYG{esc}{$t$} \PYG{k}{in}
+                      \PYG{k}{let} \PYG{n}{sv} \PYG{o}{=} \PYG{o}{(}\PYG{esc}{$\texttt{SV}$} \PYG{esc}{$t$} \PYG{esc}{$\cup$} \PYG{esc}{$\texttt{SV}$} \PYG{esc}{$e$}\PYG{o}{)} \PYG{esc}{$\setminus$} \PYG{n}{pv} \PYG{k}{in}
+                      \PYG{n+nc}{RecCheck} \PYG{esc}{$C_2$} \PYG{esc}{$\rho$} \PYG{n}{pv} \PYG{n}{sv}
+                  \PYG{k}{with} \PYG{n+nc}{RecCheckFail} \PYG{esc}{$V$} \PYG{o}{\PYGZhy{}\PYGZgt{}}
+                      \PYG{esc}{$\mathcal{P}$} \PYG{o}{:=} \PYG{esc}{$\mathcal{P} \setminus V$}\PYG{o}{;}
+                      \PYG{n+nc}{RecCheckLoop} \PYG{esc}{$C_2$} \PYG{esc}{$\rho$} \PYG{esc}{$t$} \PYG{esc}{$e$}
+\end{Verbatim}

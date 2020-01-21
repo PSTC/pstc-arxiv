@@ -1,5 +1,5 @@
 \pdfoutput=1
-\documentclass[acmsmall,screen,10pt]{acmart} % anonymous, review
+\documentclass[acmsmall,screen,anonymous,review,10pt]{acmart} % anonymous, review
 \settopmatter{printfolios=true,printacmref=false}
 \acmConference[ICFP 2020]{International Conference on Functional Programming}{24 -- 26 August 2020}{Jersey City, NJ, United States}
 
@@ -664,7 +664,6 @@ Our work extends the core language and type checking algorithm of prior theoreti
 
 \autoref{fig:inference-metafunctions} lists the various metafunctions introduced in \autoref{sec:algorithm} with their signatures and a short description.
 
-\begin{comment}
 \section{Simplified \titlelang}
 We present a simplified variant of \lang without mutually-defined \coinductive types and mutual \cofixpoints. While adhering less to Gallina, this is closer to \CIChatbar and \CIChat, and is easier to reason about. Going from the proper \lang to the simplified \lang is simple, and we provide the simplified variant explicitly for convenience. The modified portions of the syntax of terms and \coinductive definitions for simplified \lang are given in \autoref{fig:simpl-terms} and \autoref{fig:simpl-inductives}.
 
@@ -678,5 +677,4 @@ Finally, we give the corresponding size inference algorithm for these terms in \
 
 \input{figures/simplified-algorithm.tex}
 \input{figures/simplified-helpers.tex}
-\end{comment}
 \end{document}
