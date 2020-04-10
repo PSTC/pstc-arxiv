@@ -1,5 +1,0 @@
-Def example: Nat<$^\iota$> <$\to$> Nat<$^\iota$> <$\coloneqq$>
-  fix<$_{\langle 1 \rangle, 1}$> <$\langle$>f: Nat<$^*$> <$\to$> Nat<$^*$> <$\coloneqq$>
-    <$\lambda$>n: Nat. case<$_{\lambda x: \texttt{Nat}. \texttt{Nat}^\infty}$> n of
-      <$\langle$>O <$\Rightarrow$> O,
-       S <$\Rightarrow$> <$\lambda$>n': Nat. f n'<$\rangle \rangle$>.

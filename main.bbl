@@ -37,11 +37,12 @@
 \providecommand\natexlab[1]{#1}
 \providecommand\showeprint[2][]{arXiv:#2}
 
-\bibitem[\protect\citeauthoryear{Barthe, Gregoire, and Pastawski}{Barthe
+\bibitem[\protect\citeauthoryear{Barthe, Gr\'egoire, and Pastawski}{Barthe
   et~al\mbox{.}}{2005}]%
         {f-hat}
-\bibfield{author}{\bibinfo{person}{G Barthe}, \bibinfo{person}{B Gregoire},
-  {and} \bibinfo{person}{F Pastawski}.} \bibinfo{year}{{2005}}\natexlab{}.
+\bibfield{author}{\bibinfo{person}{Gilles Barthe}, \bibinfo{person}{Benjamin
+  Gr\'egoire}, {and} \bibinfo{person}{Fernando Pastawski}.}
+  \bibinfo{year}{{2005}}\natexlab{}.
 \newblock \showarticletitle{{Practical inference for type-based termination in
   a polymorphic setting}}. In \bibinfo{booktitle}{\emph{{Typed Lambda Calculi
   and Applications}}} \emph{(\bibinfo{series}{{Lecture Notes in Computer
@@ -57,11 +58,11 @@
 \showDOI{\tempurl}
 
 
-\bibitem[\protect\citeauthoryear{Barthe, Gregoire, and Pastawski}{Barthe
+\bibitem[\protect\citeauthoryear{Barthe, Gr\'egoire, and Pastawski}{Barthe
   et~al\mbox{.}}{2006}]%
         {cic-hat}
 \bibfield{author}{\bibinfo{person}{Gilles Barthe}, \bibinfo{person}{Benjamin
-  Gregoire}, {and} \bibinfo{person}{Fernando Pastawski}.}
+  Gr\'egoire}, {and} \bibinfo{person}{Fernando Pastawski}.}
   \bibinfo{year}{{2006}}\natexlab{}.
 \newblock \showarticletitle{{CIC$\widehat{~}$ : Type-Based Termination of
   Recursive Definitions in the Calculus of Inductive Constructions}}. In
@@ -80,17 +81,17 @@
 \showDOI{\tempurl}
 
 
-\bibitem[\protect\citeauthoryear{Herbelin, Pédrot, Dénès, letouzey, Sozeau,
-  Filliatre, Arias, Tassi, Gilbert, Zimmermann, and et~al.}{Herbelin
+\bibitem[\protect\citeauthoryear{Herbelin, P\'edrot, D\'en\`es, letouzey,
+  Sozeau, Filliatre, Arias, Tassi, Gilbert, Zimmermann, and et~al.}{Herbelin
   et~al\mbox{.}}{2019}]%
         {impl}
 \bibfield{author}{\bibinfo{person}{Hugo Herbelin},
-  \bibinfo{person}{Pierre-Marie Pédrot}, \bibinfo{person}{Maxime Dénès},
+  \bibinfo{person}{Pierre-Marie P\'edrot}, \bibinfo{person}{Maxime D\'en\`es},
   \bibinfo{person}{letouzey}, \bibinfo{person}{Matthieu Sozeau},
   \bibinfo{person}{Jean-Christophe Filliatre}, \bibinfo{person}{Emilio
-  Jesús~Gallego Arias}, \bibinfo{person}{Enrico Tassi},
-  \bibinfo{person}{Gaëtan Gilbert}, \bibinfo{person}{Théo Zimmermann}, {and}
-  \bibinfo{person}{et al.}} \bibinfo{year}{2019}\natexlab{}.
+  Jes\'us~Gallego Arias}, \bibinfo{person}{Enrico Tassi},
+  \bibinfo{person}{Ga\"etan Gilbert}, \bibinfo{person}{Th\'eo Zimmermann},
+  {and} \bibinfo{person}{et al.}} \bibinfo{year}{2019}\natexlab{}.
 \newblock \bibinfo{title}{{ionathanch/coq: Initial Release}}.
 \newblock
 \newblock

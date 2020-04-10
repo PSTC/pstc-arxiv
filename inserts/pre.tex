@@ -27,7 +27,7 @@
 \usepackage{mathtools}
 \usepackage{stmaryrd}
 \usepackage[frozencache,cachedir=.]{minted}
-\usepackage{bussproofs}
+\usepackage{bussproofs} % TODO: Eventually deprecate in favour of mathpartir
 \usepackage{mathpartir}
 \usepackage{xspace}
 \usepackage[shortcuts]{extdash}
@@ -127,7 +127,7 @@
 \newcommand{\pos}{\ \text{pos}\ }
 \renewcommand{\neg}{\ \text{neg}\ }
 % other
-\newcommand{\inmaterials}{in the anonymous supplementary materials}
+\renewcommand{\varw}{w} % TODO: \varw worked on Overleaf but not locally :(
 \newcommand{\spacer}{\vspace{1ex}}
 % (co) words
 \newcommand{\coinductive}{(co)\-inductive\xspace}
