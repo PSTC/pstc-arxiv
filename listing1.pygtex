@@ -1,5 +1,5 @@
 \begin{Verbatim}[commandchars=\\\{\}]
-\PYG{k+kn}{Fixpoint} \PYG{n}{add} \PYG{n}{n} \PYG{n}{m} \PYG{o}{:} \PYG{k+kt}{nat} \PYG{o}{:=}
+\PYG{k+kn}{Fixpoint} \PYG{n}{add} \PYG{n}{n} \PYG{n}{m} \PYG{o}{:} \PYG{n}{nat} \PYG{o}{:=}
   \PYG{k}{match} \PYG{n}{n} \PYG{k}{with}
   \PYG{o}{|} \PYG{n}{O} \PYG{o}{=\PYGZgt{}} \PYG{n}{m}
   \PYG{o}{|} \PYG{n}{S} \PYG{n}{p} \PYG{o}{=\PYGZgt{}} \PYG{n}{S} \PYG{o}{(}\PYG{n}{add} \PYG{n}{p} \PYG{n}{m}\PYG{o}{)}
