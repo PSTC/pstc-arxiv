@@ -2,6 +2,24 @@
 
 These are the source files for the arXiv submission of PSTC. The implementation can be found [here](https://github.com/ionathanch/coq/tree/dev).
 
+## Build instructions
+
+Using `texlive`, this requires at least the following:
+
+* `texlive-core` (obviously)
+* `texlive-fontsextra` (for acmart fonts)
+* `texlive-science` (for various packages like `stmaryd` etc.)
+* `texlive-bibtexextra` (for BibTeX/BibLaTeX)
+* `texlive-latexextra` (for various packages like `minted` etc.)
+
+If compiling with `minted`'s `finalizecache`, you will also need the Python package Pygments.
+
+If encountering the following error:
+
+> File ended while scanning use of \@newl@bel.
+
+Delete the `main.aux` file (or run `latexmk -pdflatex -C`).
+
 ## What is this mess of files in the root directory?
 
 There are a bunch of things in place to satisfy arXiv's compilation of LaTeX and should _not_ be meddled with unless you know what you are doing (i.e. unless you are William).
